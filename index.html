@@ -253,7 +253,20 @@
     font-size: 0.8125rem; color: var(--ink-4);
     font-weight: 500;
   }
-  .hero-location-flag { font-size: 1rem; }
+  .hero-location-flag {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+  }
+  .hero-location-flag img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   .hero-visual {
     position: relative;
   }
@@ -768,11 +781,11 @@
         <a href="#contact" class="btn-secondary">Contact Me</a>
       </div>
       <div class="hero-location reveal reveal-delay-4">
-  <span class="hero-location-flag">
-    <img src="https://flagcdn.com/id.svg" alt="Indonesia Flag">
-  </span>
-  <span>Building from Indonesia</span>
-</div>
+        <span class="hero-location-flag">
+          <img src="https://flagcdn.com/id.svg" alt="Indonesia Flag">
+        </span>
+        <span>Building from Indonesia</span>
+      </div>
     </div>
     <div class="hero-visual reveal reveal-delay-2">
       <div class="hero-card">
