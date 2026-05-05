@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hilya & Faarih — 14 September 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --warm-white: #FAF9F7;
+    --beige: #EDEAE6;
+    --beige-mid: #E0DBD5;
+    --charcoal: #1C1C1C;
+    --charcoal-light: #4A4A4A;
+    --gold: #B8975A;
+    --gold-light: #D4B483;
+    --gold-pale: #F0E8D8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--warm-white);
+    color: var(--charcoal);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Subtle paper grid texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(180,170,158,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,170,158,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Grain overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.022;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 128px 128px;
+  }
+
+  main { position: relative; z-index: 1; }
+
+  /* TYPOGRAPHY */
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+  .heading-xl {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+  }
+  .heading-lg {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+  }
+  .heading-md {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+  }
+  .label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .body-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--charcoal-light);
+    letter-spacing: 0.01em;
+  }
+
+  /* LAYOUT */
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+  }
+
+  /* DIVIDERS */
+  .divider-thin {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold-light), transparent);
+  }
+  .divider-h {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--beige-mid), transparent);
+    border: none;
+  }
+  .divider-h-gold {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+    border: none;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem clamp(1.5rem, 5vw, 4rem);
+    position: relative;
+  }
+
+  #hero .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .names-wrap {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .ampersand {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 300;
+    color: var(--beige-mid);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+    user-select: none;
+  }
+
+  .name-line {
+    position: relative;
+    z-index: 1;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 300;
+    font-size: clamp(3rem, 7.5vw, 6rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: var(--charcoal);
+  }
+
+  .name-spacer { height: clamp(2.5rem, 5vw, 4rem); }
+
+  .date-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2.8rem;
+  }
+  .date-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.08em;
+  }
+  .date-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: block;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 2.2rem;
+    border: 1px solid var(--charcoal);
+    background: transparent;
+    color: var(--charcoal);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--charcoal);
+    transform: translateX(-101%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: -1;
+  }
+  .cta-btn:hover {
+    color: var(--warm-white);
+    border-color: var(--charcoal);
+  }
+  .cta-btn:hover::before {
+    transform: translateX(0);
+  }
+
+  .cta-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 2.2rem;
+    border: 1px solid var(--beige-mid);
+    background: transparent;
+    color: var(--charcoal-light);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+  }
+  .cta-btn-ghost:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* SCROLL INDICATOR */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gold-light));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  /* SECTIONS */
+  section { position: relative; }
+
+  .section-pad { padding: clamp(5rem, 10vw, 9rem) 0; }
+
+  /* OPENING MESSAGE */
+  #opening {
+    background: var(--beige);
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .opening-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .opening-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+  .opening-sig {
+    margin-top: 2.5rem;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    color: var(--charcoal-light);
+    letter-spacing: 0.08em;
+  }
+
+  /* EVENTS */
+  #events {
+    padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .events-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0 3rem;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem 0;
+    }
+    .events-divider-v { display: none; }
+  }
+  .event-block { padding: 0.5rem 0; }
+  .event-type {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .event-type::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .event-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-bottom: 1.8rem;
+    letter-spacing: 0.02em;
+  }
+  .event-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .event-detail {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .event-detail-icon {
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+  .event-detail-text {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--charcoal-light);
+    letter-spacing: 0.02em;
+  }
+  .event-detail-text strong {
+    font-weight: 500;
+    color: var(--charcoal);
+    display: block;
+  }
+
+  /* Ornament */
+  .ornament {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .ornament svg { opacity: 0.25; }
+
+  /* MAP */
+  #map {
+    background: var(--beige);
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .map-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    background: #e8e4de;
+  }
+  .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(1) sepia(0.15) contrast(0.9) brightness(1.05);
+    transition: filter 0.4s ease;
+  }
+  .map-container:hover iframe {
+    filter: grayscale(0.7) sepia(0.1) contrast(0.95) brightness(1.05);
+  }
+  .map-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 40px rgba(250, 249, 247, 0.3);
+  }
+
+  /* RSVP */
+  #rsvp {
+    padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .rsvp-inner {
+    max-width: 560px;
+  }
+  .form-group {
+    margin-bottom: 2rem;
+  }
+  .form-label {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .form-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--beige-mid);
+    padding: 0.6rem 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+  }
+  .form-input:focus {
+    border-color: var(--gold);
+  }
+  .form-input::placeholder {
+    color: rgba(74,74,74,0.3);
+    font-weight: 300;
+  }
+  .radio-group {
+    display: flex;
+    gap: 2rem;
+  }
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: pointer;
+  }
+  .radio-option input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--beige-mid);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .radio-option input:checked {
+    border-color: var(--gold);
+    background: var(--gold);
+    box-shadow: inset 0 0 0 2px var(--warm-white);
+  }
+  .radio-option span {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: var(--charcoal-light);
+    letter-spacing: 0.04em;
+  }
+
+  /* GUESTBOOK */
+  #guestbook {
+    background: var(--beige);
+    padding: clamp(5rem, 10vw, 9rem) clamp(1.5rem, 5vw, 4rem);
+  }
+  .guestbook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  @media (max-width: 680px) {
+    .guestbook-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  .message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    max-height: 460px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--beige-mid) transparent;
+  }
+  .message-card {
+    padding: 1.4rem 1.6rem;
+    background: var(--warm-white);
+    border-left: 2px solid var(--gold-pale);
+    position: relative;
+  }
+  .message-card-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.4rem;
+  }
+  .message-card-text {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--charcoal-light);
+  }
+  .message-card-time {
+    font-size: 0.62rem;
+    color: rgba(74,74,74,0.35);
+    letter-spacing: 0.1em;
+    margin-top: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  /* CLOSING */
+  #closing {
+    padding: clamp(6rem, 12vw, 11rem) clamp(1.5rem, 5vw, 4rem);
+    text-align: center;
+  }
+  .closing-line {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    color: var(--charcoal-light);
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+  }
+  .closing-names {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+  }
+  .closing-footer {
+    margin-top: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(74,74,74,0.35);
+  }
+
+  /* FADE IN OBSERVER */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-1 { transition-delay: 0.1s; }
+  .fade-up.delay-2 { transition-delay: 0.2s; }
+  .fade-up.delay-3 { transition-delay: 0.35s; }
+  .fade-up.delay-4 { transition-delay: 0.5s; }
+
+  /* SECTION HEADER */
+  .section-header {
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+  }
+  .section-num {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(74,74,74,0.3);
+    margin-bottom: 0.6rem;
+  }
+
+  /* GOLD ACCENT LINE */
+  .gold-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    vertical-align: middle;
+    margin-right: 0.8rem;
+  }
+
+  /* Toast */
+  #toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--charcoal);
+    color: var(--warm-white);
+    padding: 1rem 1.6rem;
+    font-size: 0.78rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 999;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+  #toast.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SELECT */
+  select.form-input {
+    cursor: pointer;
+  }
+
+  /* Subtle ornamental border top/bottom */
+  .ornament-border {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .ornament-border::before,
+  .ornament-border::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--beige-mid));
+  }
+  .ornament-border::after {
+    background: linear-gradient(to left, transparent, var(--beige-mid));
+  }
+
+  /* Hero date number */
+  .hero-date {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(0.85rem, 1.5vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    color: var(--charcoal-light);
+    text-transform: uppercase;
+  }
+
+  /* Invite opening envelope effect */
+  .invitation-card {
+    position: relative;
+    border: 1px solid var(--beige-mid);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--warm-white);
+  }
+  .invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid var(--beige-mid);
+    pointer-events: none;
+  }
+
+  @media (max-width: 480px) {
+    .date-row { gap: 0.8rem; }
+    .date-num { font-size: 1.6rem; }
+    .hero-date { letter-spacing: 0.18em; font-size: 0.75rem; }
+    .map-container { height: 260px; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+
+    <div class="eyebrow fade-up">
+      <span class="label">Undangan Pernikahan</span>
+    </div>
+
+    <div class="names-wrap fade-up delay-1">
+      <div class="ampersand">&</div>
+      <div class="name-line">Hilya</div>
+      <div class="name-spacer"></div>
+      <div class="name-line">Faarih</div>
+    </div>
+
+    <div class="date-row fade-up delay-2">
+      <span class="date-num">14</span>
+      <span class="date-dot"></span>
+      <span class="date-num">09</span>
+      <span class="date-dot"></span>
+      <span class="date-num">2026</span>
+    </div>
+
+    <p class="body-text fade-up delay-3" style="margin-bottom: 2.5rem; color: var(--charcoal-light); letter-spacing: 0.06em; font-size: 0.8rem; text-transform: uppercase;">
+      KAMI MENGUNDANG ANDA UNTUK MERAYAKAN HARI ISTIMEWA KAMI
+    </p>
+
+    <a href="#events" class="cta-btn fade-up delay-4">
+      Buka Undangan
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 1v10M1 6l5 5 5-5" stroke="currentColor" stroke-width="1"/>
+      </svg>
+    </a>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── OPENING MESSAGE ─── -->
+  <section id="opening">
+      <div class="opening-inner fade-up">
+        <div style="font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); margin-bottom: 1.5rem; font-size: 1.1rem; letter-spacing: 0.1em;">
+          Bismillahirrahmanirrahim
+        </div>
+        <div class="ornament-border" style="margin-bottom: 2.5rem;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1 L15 8 L8 15 L1 8 Z" stroke="#B8975A" stroke-width="0.8" fill="none"/>
+            <circle cx="8" cy="8" r="2" fill="#B8975A" opacity="0.5"/>
+          </svg>
+        </div>
+
+        <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; color: var(--charcoal-light); margin-bottom: 2rem; letter-spacing: 0.05em;">
+          Assalamu'alaikum Warahmatullahi Wabarakatuh
+        </div>
+
+        <p class="opening-quote">
+          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+        </p>
+        <div style="font-size: 0.75rem; color: var(--gold); margin-top: 1rem; letter-spacing: 0.1em;">(QS. AR-RUM: 21)</div>
+
+        <div class="opening-sig fade-up delay-1">
+          — Hilya & Faarih
+        </div>
+      </div>
+  </section>
+
+  <!-- ─── EVENT DETAILS ─── -->
+  <section id="events">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <div class="section-num">01 — Akad & Resepsi</div>
+        <h2 class="heading-lg" style="color: var(--charcoal);">
+          <span class="gold-line"></span>Detail Acara
+        </h2>
+      </div>
+
+      <div class="events-grid">
+
+        <!-- Akad -->
+        <div class="event-block fade-up">
+          <div class="event-type">Akad Nikah</div>
+          <div class="event-name">Akad Nikah</div>
+          <div class="event-detail-row">
+            <div class="event-detail">
+              <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <div class="event-detail-text">
+                <strong>Senin, 14 September 2026</strong>
+                08.00 — 10.00 WIB
+              </div>
+            </div>
+            <div class="event-detail">
+              <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              <div class="event-detail-text">
+                <strong>Grand Ballroom, Ayana Midplaza</strong>
+                Jl. Jend. Sudirman Kav. 10-11<br>Jakarta Pusat, DKI Jakarta
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="events-divider-v" style="height: 200px; width: 1px; background: linear-gradient(to bottom, transparent, var(--gold-light), transparent); margin: 0 auto;"></div>
+
+        <!-- Resepsi -->
+        <div class="event-block fade-up delay-2">
+          <div class="event-type">Resepsi</div>
+          <div class="event-name">Walimatul Ursy</div>
+          <div class="event-detail-row">
+            <div class="event-detail">
+              <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <div class="event-detail-text">
+                <strong>Senin, 14 September 2026</strong>
+                12.00 — 15.00 WIB
+              </div>
+            </div>
+            <div class="event-detail">
+              <svg class="event-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+              </svg>
+              <div class="event-detail-text">
+                <strong>Crystal Hall, Ayana Midplaza</strong>
+                Jl. Jend. Sudirman Kav. 10-11<br>Jakarta Pusat, DKI Jakarta
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ornament -->
+      <div style="margin-top: 4.5rem;" class="fade-up">
+        <hr class="divider-h-gold">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── MAP ─── -->
+  <section id="map">
+    <div class="container">
+
+      <div class="map-header fade-up">
+        <div>
+          <div class="section-num" style="margin-bottom: 0.5rem;">02 — Lokasi</div>
+          <h2 class="heading-lg">
+            <span class="gold-line"></span>Peta Lokasi
+          </h2>
+        </div>
+        <a href="https://maps.google.com/?q=Ayana+Midplaza+Jakarta" target="_blank" rel="noopener" class="cta-btn-ghost">
+          Buka di Google Maps
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M1 9L9 1M9 1H3M9 1v6" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="map-container fade-up delay-1">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1285891986886!2d106.81792161476917!3d-6.2149079953834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3fad2c3e4b5%3A0x7cd6b8e9f2c8b1a!2sAYANA+Midplaza%2C+JAKARTA!5e0!3m2!1sen!2sid!4v1699999999999!5m2!1sen!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Venue Location">
+        </iframe>
+        <div class="map-overlay"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── RSVP ─── -->
+  <section id="rsvp">
+    <div class="container">
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
+
+        <div class="fade-up">
+          <div class="section-num" style="margin-bottom: 0.6rem;">03 — Konfirmasi Kehadiran</div>
+          <h2 class="heading-lg" style="margin-bottom: 1.5rem;">
+            <span class="gold-line"></span>RSVP
+          </h2>
+          <p class="body-text" style="max-width: 320px;">
+            Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i dapat hadir dan memberikan doa restu. Mohon konfirmasi sebelum <strong style="color: var(--charcoal); font-weight: 400;">1 September 2026.</strong>
+          </p>
+          <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--beige-mid);">
+            <div style="font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;">Busana</div>
+            <div class="body-text">Pakaian Formal<br>Warna: Dusty Rose & Ivory</div>
+          </div>
+        </div>
+
+        <div class="rsvp-inner fade-up delay-2">
+          <div class="form-group">
+            <label class="form-label" for="rsvp-name">Nama Anda</label>
+            <input type="text" id="rsvp-name" class="form-input" placeholder="Nama Lengkap">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Apakah Anda akan hadir?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="attendance" value="yes" checked>
+                <span>Ya, saya akan hadir</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="attendance" value="no">
+                <span>Mohon maaf, tidak bisa hadir</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="rsvp-guests">Jumlah Tamu</label>
+            <select id="rsvp-guests" class="form-input">
+              <option value="1">1 orang (saya sendiri)</option>
+              <option value="2">2 orang</option>
+              <option value="3">3 orang</option>
+              <option value="4">4 orang</option>
+            </select>
+          </div>
+
+          <button class="cta-btn" onclick="sendRSVP()" style="margin-top: 0.5rem; width: 100%; justify-content: center;">
+            Kirim RSVP via WhatsApp
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.117 1.523 5.845L.057 23.941l6.262-1.642A11.935 11.935 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.906 0-3.686-.524-5.205-1.43l-.374-.221-3.878 1.018 1.035-3.777-.241-.389A9.932 9.932 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── GUESTBOOK ─── -->
+  <section id="guestbook">
+    <div class="container">
+
+      <div class="section-header fade-up">
+        <div class="section-num">04 — Ucapan & Doa Restu</div>
+        <h2 class="heading-lg">
+          <span class="gold-line"></span>Buku Tamu
+        </h2>
+      </div>
+
+      <div class="guestbook-grid">
+
+        <!-- Form -->
+        <div class="fade-up">
+          <div class="form-group">
+            <label class="form-label" for="gb-name">Nama Anda</label>
+            <input type="text" id="gb-name" class="form-input" placeholder="Nama">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="gb-msg">Pesan Anda</label>
+            <textarea id="gb-msg" class="form-input" rows="4" placeholder="Tuliskan doa dan ucapan Anda..." style="resize: none; line-height: 1.7;"></textarea>
+          </div>
+          <button class="cta-btn" onclick="submitMessage()" style="margin-top: 0.5rem;">
+            Kirim Ucapan
+          </button>
+        </div>
+
+        <!-- Messages -->
+        <div class="fade-up delay-2">
+          <div class="message-list" id="message-list">
+            <!-- Pesan akan muncul di sini -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── CLOSING ─── -->
+  <section id="closing">
+    <div class="container">
+
+      <div class="fade-up" style="margin-bottom: 4rem; display: flex; justify-content: center;">
+        <svg width="60" height="40" viewBox="0 0 60 40" fill="none">
+          <path d="M30 20 C30 12 20 4 10 10 C0 16 4 30 14 28 C20 27 24 22 30 20 C36 18 40 13 46 12 C56 10 60 24 50 30 C40 36 30 28 30 20Z" stroke="#B8975A" stroke-width="0.8" fill="none" opacity="0.5"/>
+          <circle cx="30" cy="20" r="2" fill="#B8975A" opacity="0.4"/>
+        </svg>
+      </div>
+
+      <p class="closing-line fade-up">
+        "Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih."
+      </p>
+
+      <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.8rem; color: var(--charcoal-light); margin-bottom: 2rem; letter-spacing: 0.05em;" class="fade-up">
+        Wassalamu'alaikum Warahmatullahi Wabarakatuh
+      </div>
+
+      <div class="closing-names fade-up delay-1">
+        Hilya & Faarih
+      </div>
+
+      <div class="closing-footer fade-up delay-2">
+        <span>14 . 09 . 2026</span>
+        <span style="width:30px; height:1px; background: var(--beige-mid); display:inline-block; vertical-align: middle;"></span>
+        <span>Jakarta</span>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// ─── INTERSECTION OBSERVER ───
+const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ─── TOAST ───
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ─── GUESTBOOK PERSISTENCE ───
+function loadMessages() {
+  const saved = localStorage.getItem('wedding_messages');
+  if (saved) {
+    const messages = JSON.parse(saved);
+    const list = document.getElementById('message-list');
+    // Prepend in reverse order so the newest (first in array) stays at the top
+    [...messages].reverse().forEach(m => {
+      const card = createMessageCard(m.name, m.msg, m.time);
+      list.insertBefore(card, list.firstChild);
+    });
+  }
+}
+
+function saveMessage(name, msg, time) {
+  const saved = localStorage.getItem('wedding_messages');
+  const messages = saved ? JSON.parse(saved) : [];
+  messages.unshift({ name, msg, time });
+  localStorage.setItem('wedding_messages', JSON.stringify(messages));
+}
+
+function createMessageCard(name, msg, time) {
+  const card = document.createElement('div');
+  card.className = 'message-card';
+  card.innerHTML = `
+    <div class="message-card-name">${escapeHtml(name)}</div>
+    <div class="message-card-text">${escapeHtml(msg)}</div>
+    <div class="message-card-time">${time}</div>
+  `;
+  return card;
+}
+
+window.addEventListener('DOMContentLoaded', loadMessages);
+
+// ─── RSVP via WhatsApp ───
+function sendRSVP() {
+  const name = document.getElementById('rsvp-name').value.trim();
+  const attendance = document.querySelector('input[name="attendance"]:checked')?.value;
+  const guests = document.getElementById('rsvp-guests').value;
+
+  if (!name) { showToast('Mohon masukkan nama Anda.'); return; }
+
+  const attend = attendance === 'yes'
+    ? `Saya akan hadir dengan ${guests} tamu.`
+    : 'Mohon maaf, saya tidak dapat hadir.';
+
+  const msg = `Halo, saya ${name}.\n${attend}\n\nSalam hangat,\n${name}`;
+  const encoded = encodeURIComponent(msg);
+  const phone = '6285338561880';
+
+  window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+}
+
+// ─── GUESTBOOK ───
+function submitMessage() {
+  const name = document.getElementById('gb-name').value.trim();
+  const msg = document.getElementById('gb-msg').value.trim();
+
+  if (!name || !msg) { showToast('Mohon isi nama dan pesan Anda.'); return; }
+
+  const now = new Date();
+  const time = now.toLocaleString('id-ID', { month: 'long', year: 'numeric' });
+
+  saveMessage(name, msg, time);
+
+  const list = document.getElementById('message-list');
+  const card = createMessageCard(name, msg, time);
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(12px)';
+  card.style.transition = 'all 0.5s ease';
+
+  list.insertBefore(card, list.firstChild);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    });
+  });
+
+  document.getElementById('gb-name').value = '';
+  document.getElementById('gb-msg').value = '';
+
+  showToast('Ucapan Anda telah terkirim. Terima kasih ✦');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ─── Mobile RSVP grid fix ───
+function checkLayout() {
+  const rsvpGrid = document.querySelector('#rsvp .container > div');
+  if (rsvpGrid) {
+    if (window.innerWidth < 640) {
+      rsvpGrid.style.gridTemplateColumns = '1fr';
+      rsvpGrid.style.gap = '3rem';
+    } else {
+      rsvpGrid.style.gridTemplateColumns = '1fr 1fr';
+      rsvpGrid.style.gap = '5rem';
+    }
+  }
+}
+checkLayout();
+window.addEventListener('resize', checkLayout);
+</script>
+
+</body>
+</html>
