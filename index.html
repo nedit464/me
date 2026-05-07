@@ -14,24 +14,24 @@
   }
 
   :root {
-    --paper: #fafcff;
-    --paper-strong: #edf4fb;
+    --paper: #f8f9fb;
+    --paper-strong: #f1f3f6;
     --surface: #ffffff;
-    --ink: #101418;
-    --muted: #5d6874;
-    --soft: #98a4af;
-    --line: rgba(16, 20, 24, 0.1);
-    --line-strong: rgba(16, 20, 24, 0.2);
-    --rust: #df6c42;
-    --olive: #5f8f75;
-    --blue: #2276b7;
-    --charcoal: #171d23;
-    --shadow: 0 18px 50px rgba(23, 29, 35, 0.08);
-    --max: 1160px;
-    --nav-h: 72px;
-    --radius: 8px;
-    --body: "Inter", Arial, sans-serif;
-    --display: "Instrument Serif", Georgia, serif;
+    --ink: #111418;
+    --muted: #525b64;
+    --soft: #949ca5;
+    --line: rgba(17, 20, 24, 0.08);
+    --line-strong: rgba(17, 20, 24, 0.15);
+    --rust: #d35d33;
+    --olive: #567d6a;
+    --blue: #1e69a3;
+    --charcoal: #151a1f;
+    --shadow: 0 20px 60px rgba(17, 20, 24, 0.06);
+    --max: 1140px;
+    --nav-h: 80px;
+    --radius: 4px;
+    --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --display: "Instrument Serif", serif;
   }
 
   html {
@@ -43,12 +43,11 @@
     margin: 0;
     font-family: var(--body);
     color: var(--ink);
-    background:
-      linear-gradient(rgba(21, 20, 17, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(21, 20, 17, 0.025) 1px, transparent 1px),
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(17, 20, 24, 0.015) 1px, transparent 1px),
       var(--paper);
-    background-size: 56px 56px;
-    line-height: 1.6;
+    background-size: 32px 32px;
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -74,10 +73,10 @@
 
   nav.scrolled,
   nav.menu-open {
-    background: rgba(247, 245, 239, 0.92);
+    background: rgba(248, 249, 251, 0.94);
     border-color: var(--line);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .nav-inner {
@@ -92,9 +91,22 @@
 
   .nav-logo {
     font-weight: 800;
-    font-size: 0.96rem;
-    letter-spacing: 0;
+    font-size: 0.9rem;
+    letter-spacing: -0.01em;
     text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-logo::before {
+    content: "OP_v2.6";
+    font-size: 0.6rem;
+    padding: 2px 4px;
+    border: 1px solid var(--line);
+    color: var(--soft);
+    font-weight: 600;
   }
 
   .nav-logo span {
@@ -206,10 +218,10 @@
     right: 0;
     z-index: 45;
     padding: 10px 24px 24px;
-    background: rgba(247, 245, 239, 0.97);
+    background: rgba(248, 249, 251, 0.98);
     border-bottom: 1px solid var(--line);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
   }
 
   .mobile-menu.open {
@@ -259,13 +271,14 @@
   }
 
   .section-title {
-    max-width: 760px;
+    max-width: 800px;
     margin: 0;
     font-family: var(--display);
-    font-size: clamp(2.5rem, 6vw, 5.1rem);
-    line-height: 0.96;
+    font-size: clamp(3rem, 7vw, 5.8rem);
+    line-height: 0.92;
     font-weight: 400;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
   }
 
   .section-copy {
@@ -296,15 +309,26 @@
   .availability {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
-    padding: 7px 10px;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 8px 14px;
     border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.48);
-    color: var(--muted);
-    font-size: 0.78rem;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .availability::after {
+    content: "8.1845° S, 113.6681° E";
+    color: var(--soft);
+    font-weight: 500;
+    font-size: 0.65rem;
+    border-left: 1px solid var(--line);
+    padding-left: 12px;
   }
 
   .availability::before {
@@ -323,13 +347,13 @@
   }
 
   h1 {
-    max-width: 790px;
+    max-width: 800px;
     margin: 0;
     font-family: var(--display);
     font-size: clamp(4.6rem, 10vw, 8.9rem);
     line-height: 0.86;
     font-weight: 400;
-    letter-spacing: 0;
+    letter-spacing: -0.02em;
     overflow-wrap: break-word;
   }
 
@@ -409,39 +433,38 @@
 
   .portrait-card {
     position: absolute;
-    left: 22px;
-    right: 22px;
-    bottom: 22px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.26);
-    border-radius: var(--radius);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px;
     color: #fff;
-    background: rgba(21, 20, 17, 0.5);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: linear-gradient(to top, rgba(17, 20, 24, 0.9), transparent);
   }
 
   .portrait-label {
-    margin: 0 0 8px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.73rem;
+    margin: 0 0 12px;
+    color: var(--rust);
+    font-size: 0.65rem;
     font-weight: 800;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
   }
 
   .portrait-title {
     margin: 0;
-    font-size: 1.06rem;
-    font-weight: 800;
-    line-height: 1.35;
+    font-size: 1.2rem;
+    font-family: var(--display);
+    font-weight: 400;
+    line-height: 1.2;
+    max-width: 280px;
   }
 
   .portrait-copy {
-    margin: 12px 0 0;
-    color: rgba(255, 255, 255, 0.72);
-    font-size: 0.88rem;
-    line-height: 1.65;
+    margin: 16px 0 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 240px;
   }
 
   .work {
@@ -473,28 +496,50 @@
 
   .project-card {
     grid-column: span 4;
-    min-height: 320px;
+    min-height: 340px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 26px;
+    padding: 32px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: var(--surface);
-    box-shadow: 0 1px 0 rgba(21, 20, 17, 0.03);
-    transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    transition: all 200ms cubic-bezier(0.2, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: "COMMIT_LOG_v2.0";
+    position: absolute;
+    top: 0;
+    right: 32px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--soft);
+    opacity: 0.4;
+    transform: translateY(-100%);
+    transition: transform 200ms ease;
+  }
+
+  .project-card:hover::before {
+    transform: translateY(12px);
   }
 
   .project-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--line-strong);
-    box-shadow: var(--shadow);
+    border-color: var(--ink);
+    box-shadow: 0 12px 40px rgba(17, 20, 24, 0.05);
   }
 
   .project-card.featured {
     grid-column: span 8;
     background: var(--charcoal);
     color: #fff;
+    border-color: var(--charcoal);
+  }
+
+  .project-card.featured::before {
+    color: rgba(255, 255, 255, 0.3);
   }
 
   .project-top {
@@ -634,6 +679,12 @@
 
   .focus .eyebrow {
     color: #d7aa7c;
+  }
+
+  .focus .section-title,
+  .focus .section-copy,
+  .focus .section-note {
+    color: #fff;
   }
 
   .focus .section-copy,
@@ -994,8 +1045,8 @@
         </div>
         <div class="hero-meta reveal delay-3" aria-label="Portfolio summary">
           <div class="meta-item">
-            <p class="meta-value">3 active</p>
-            <p class="meta-label">Product bets</p>
+            <p class="meta-value">03 active</p>
+            <p class="meta-label">Technical bets</p>
           </div>
           <div class="meta-item">
             <p class="meta-value">Indonesia</p>
@@ -1033,42 +1084,30 @@
           <div>
             <div class="project-top">
               <span class="project-index">01</span>
-              <span class="status">Building</span>
+              <span class="status">Operational</span>
             </div>
-            <h3 class="project-title">Menuin</h3>
-            <p class="project-desc">A digital menu and ordering platform for Indonesian MSMEs that want a cleaner customer experience without adding operational complexity.</p>
+            <h3 class="project-title">FSI (Fihla Sovereign Infrastructure)</h3>
+            <p class="project-desc">A digital sovereignty infrastructure layer for secure asset management and contextual access, replacing vulnerable centralized credentials with cryptographic commitments.</p>
           </div>
-          <a href="https://menuin.my.id" class="project-link">View project</a>
+          <a href="https://fsi.fihla.id" target="_blank" rel="noopener" class="project-link">View project</a>
         </article>
 
         <article class="project-card reveal delay-1">
           <div>
             <div class="project-top">
               <span class="project-index">02</span>
-              <span class="status">Building</span>
+              <span class="status">Live</span>
             </div>
-            <h3 class="project-title">PasarPixel</h3>
-            <p class="project-desc">A marketplace direction for digital products, templates, tools, and creator assets with a sharper focus on Indonesian creators.</p>
+            <h3 class="project-title">Minecraft Templates</h3>
+            <p class="project-desc">Premium web templates for Minecraft communities and server owners, shaped around performance, branding, and niche community needs.</p>
           </div>
-          <a href="https://lynk.id/pasarpixel" class="project-link">View project</a>
+          <a href="https://builtbybit.com/resources/pixelrealm-premium-landing-page.105539/" target="_blank" rel="noopener" class="project-link">View work</a>
         </article>
 
         <article class="project-card reveal delay-2">
           <div>
             <div class="project-top">
               <span class="project-index">03</span>
-              <span class="status">Live</span>
-            </div>
-            <h3 class="project-title">Minecraft Templates</h3>
-            <p class="project-desc">Premium web templates for Minecraft communities and server owners, shaped around performance, branding, and niche community needs.</p>
-          </div>
-          <a href="https://builtbybit.com/resources/pixelrealm-premium-landing-page.105539/" class="project-link">View work</a>
-        </article>
-
-        <article class="project-card reveal delay-3">
-          <div>
-            <div class="project-top">
-              <span class="project-index">04</span>
               <span class="status">Exploring</span>
             </div>
             <h3 class="project-title">Next venture</h3>
@@ -1076,6 +1115,7 @@
           </div>
           <a href="#contact" class="project-link">Discuss ideas</a>
         </article>
+
       </div>
     </div>
   </section>
