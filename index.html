@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lalu Muhammad Faarih As'ad — Founder & CEO PT FIHLA INOVASI UTAMA</title>
-
-  <!-- Google Fonts import -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      user-select: none;
-      -webkit-font-smoothing: antialiased;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap');
 
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
     html, body {
       width: 100%;
       margin: 0;
@@ -26,9 +16,7 @@
       background-color: #f8f9fb;
       -ms-overflow-style: none;
       scrollbar-width: none;
-      scroll-behavior: smooth;
     }
-
     body {
       min-height: 900vh;
       font-family: 'Inter', 'Outfit', sans-serif;
@@ -36,24 +24,16 @@
       overflow-x: hidden;
       cursor: none;
     }
-
     @media (pointer: coarse) {
       body { cursor: auto; }
       .cursor-inner, .cursor-outer { display: none !important; }
     }
+    ::-webkit-scrollbar { display: none; width: 0; }
 
-    ::-webkit-scrollbar {
-      display: none;
-      width: 0;
-    }
-
-    /* Fixed WebGL Canvas Stage */
     #webgl {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 1;
       outline: none;
       pointer-events: none;
@@ -61,509 +41,175 @@
 
     /* Custom Cursor */
     .cursor-inner {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background-color: #0284c7;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s;
+      position: fixed; top: 0; left: 0; width: 8px; height: 8px;
+      background-color: #0284c7; border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%); transition: transform 0.1s ease;
     }
-
     .cursor-outer {
-      position: fixed;
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(2, 132, 199, 0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease-out, width 0.2s, height 0.2s;
+      position: fixed; top: 0; left: 0; width: 36px; height: 36px;
+      border: 1.5px solid rgba(2, 132, 199, 0.4); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s;
     }
 
-    .cursor-hover .cursor-inner {
-      width: 12px;
-      height: 12px;
-      background-color: #10b981;
-    }
-
-    .cursor-hover .cursor-outer {
-      width: 52px;
-      height: 52px;
-      border-color: rgba(16, 185, 129, 0.6);
-    }
-
-    /* Visual Cyber Grid Overlay */
-    .grid-horizontal-line {
-      position: fixed;
-      top: 50%;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.12) 15%, rgba(16, 185, 129, 0.12) 85%, transparent);
-      z-index: 2;
-      pointer-events: none;
-    }
-
+    /* Grid Lines & Story Dashes */
     .grid-lines {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 4vw;
-      z-index: 2;
-      pointer-events: none;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+      z-index: 2; pointer-events: none; display: flex; justify-content: space-between;
+      padding: 0 40px; box-sizing: border-box;
     }
-
     .grid-line {
-      position: relative;
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.08) 10%, rgba(16, 185, 129, 0.08) 90%, transparent);
+      position: relative; width: 1px; height: 100%;
+      background: rgba(17, 20, 24, 0.04);
     }
-
+    .grid-horizontal-line {
+      position: fixed; top: 50%; left: 0; width: 100%; height: 1px;
+      background: rgba(17, 20, 24, 0.03); z-index: 2; pointer-events: none;
+    }
     .grid-dot {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #0284c7;
-      border-radius: 50%;
-      left: -2px;
-      box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
+      position: absolute; width: 5px; height: 5px; background: rgba(2, 132, 199, 0.3);
+      border-radius: 50%; left: -2px;
     }
+    .grid-dot.top { top: 120px; }
+    .grid-dot.bottom { bottom: 60px; }
 
-    .grid-dot.top { top: 12vh; }
-    .grid-dot.bottom { bottom: 12vh; }
-
-    /* Story Progress Bar Container */
     .story-progress-container {
-      position: relative;
+      display: flex; flex-direction: column; justify-content: center; height: 100%;
     }
+    .story-dashes { display: flex; flex-direction: column; gap: 12px; }
+    .story-dash { width: 3px; height: 32px; background: rgba(0, 0, 0, 0.08); border-radius: 2px; overflow: hidden; }
+    .story-dash-fill { width: 100%; height: 0%; background: #0284c7; transition: height 0.1s linear; }
 
-    .story-dashes {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      pointer-events: auto;
-    }
-
-    .story-dash {
-      width: 3px;
-      height: 38px;
-      background: rgba(17, 20, 24, 0.12);
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .story-dash-fill {
-      width: 100%;
-      height: 0%;
-      background: linear-gradient(180deg, #0284c7, #10b981);
-      border-radius: 2px;
-      transition: height 0.1s linear;
-    }
-
-    /* Cinematic UI Overlay Container */
+    /* Layout & Container */
     .cinematic-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 10;
-      pointer-events: none;
-      padding: 0 5vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      position: relative; z-index: 10; width: 100%; max-width: 1400px;
+      margin: 0 auto; padding: 0 40px 40px 40px;
     }
 
-    /* Responsive Header */
+    /* Header Navigation */
     .main-header {
-      width: 100%;
-      padding: 32px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      pointer-events: auto;
+      position: fixed; top: 0; left: 0; width: 100%;
+      padding: 28px 40px; display: flex; justify-content: space-between; align-items: center;
+      z-index: 100; backdrop-filter: blur(8px); background: rgba(248, 249, 251, 0.6);
+      border-bottom: 1px solid rgba(2, 132, 199, 0.08);
     }
+    .brand { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; }
+    .header-nav { display: flex; align-items: center; gap: 20px; }
+    .nav-link { color: #525866; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-link:hover { color: #0284c7; }
+    .nav-dot { width: 4px; height: 4px; background: #cbd5e1; border-radius: 50%; }
 
-    .brand {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      letter-spacing: -0.02em;
-      color: #111418;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .brand-tag {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.65rem;
-      background: rgba(2, 132, 199, 0.1);
-      color: #0284c7;
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid rgba(2, 132, 199, 0.2);
-    }
-
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 10px 24px;
-      border-radius: 30px;
-      border: 1px solid rgba(14, 165, 233, 0.15);
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
-    }
-
-    .nav-link {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: #475569;
-      text-decoration: none;
-      transition: color 0.25s;
-    }
-
-    .nav-link:hover {
-      color: #0284c7;
-    }
-
-    .nav-dot {
-      width: 3px;
-      height: 3px;
-      background: rgba(14, 165, 233, 0.3);
-      border-radius: 50%;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
+    .header-actions { display: flex; align-items: center; gap: 16px; }
     .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #0f172a;
-      color: #f8f9fb;
-      padding: 10px 20px;
-      border-radius: 24px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.18);
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 20px; background: #111418; color: #fff; text-decoration: none;
+      border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease;
     }
+    .contact-btn:hover { background: #0284c7; }
+    .btn-circle { width: 6px; height: 6px; background: #38bdf8; border-radius: 50%; }
 
-    .contact-btn:hover {
-      background: #0284c7;
-      transform: translateY(-1px);
-    }
-
-    .btn-circle {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #10b981;
-    }
-
-    .mobile-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 6px;
-      z-index: 101;
-    }
-
-    .mobile-toggle span {
-      width: 22px;
-      height: 2px;
-      background: #111418;
-      display: block;
-      transition: transform 0.3s, opacity 0.3s;
-    }
+    .mobile-toggle { display: none; }
 
     /* Mobile Drawer */
     .mobile-nav-drawer {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background: rgba(248, 249, 251, 0.98);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 40px;
-      gap: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
+      position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+      background: rgba(248, 249, 251, 0.96); backdrop-filter: blur(20px);
+      z-index: 99; display: flex; flex-direction: column; justify-content: center;
+      padding: 40px; gap: 24px; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-left: 1px solid rgba(2, 132, 199, 0.15);
     }
+    .mobile-nav-drawer.active { right: 0; }
+    .mobile-link { font-size: 1.5rem; font-weight: 600; color: #111418; text-decoration: none; }
 
-    .mobile-nav-drawer.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .mobile-link {
-      font-family: 'Instrument Serif', serif;
-      font-size: 2.5rem;
-      color: #111418;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .mobile-link:hover {
-      color: #0284c7;
-    }
-
-    /* Slides Base */
+    /* Slides Content */
     .slide {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 100%;
-      max-width: 620px;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
-      pointer-events: auto;
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 100%; max-width: 680px; opacity: 0; pointer-events: none;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
-    .slide.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(-50%);
-    }
+    .slide.active { opacity: 1; pointer-events: auto; transform: translateY(-50%) translateY(0); }
 
     .eyebrow-tag {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      color: #0284c7;
-      margin-bottom: 12px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(2, 132, 199, 0.08);
-      padding: 4px 10px;
-      border-radius: 4px;
-      border: 1px solid rgba(2, 132, 199, 0.18);
+      font-family: 'Fira Code', monospace; font-size: 0.78rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: #0284c7; margin-bottom: 16px; font-weight: 600;
     }
-
     .slide-title {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(3.2rem, 7.5vw, 6.2rem);
-      line-height: 0.92;
-      color: #0f172a;
-      margin-bottom: 24px;
-      font-weight: 400;
+      font-family: 'Instrument Serif', serif; font-size: clamp(3.2rem, 7vw, 6.2rem);
+      line-height: 0.95; color: #111418; margin-bottom: 24px; font-weight: 400;
     }
+    .desc-row { display: flex; gap: 24px; }
+    .slide-desc { font-size: 1.05rem; line-height: 1.6; color: #475569; font-weight: 400; }
 
-    .desc-row {
-      display: flex;
-      gap: 24px;
-    }
-
-    .slide-desc {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      color: #334155;
-      font-weight: 400;
-    }
-
-    /* Slide Specific Layouts */
-    #slide-1 {
-      left: 2vw;
-    }
-
-    #slide-1 .col-1 { flex: 1; }
-    #slide-1 .col-2 { flex: 1; }
-
-    /* Slide 2 & Mask */
-    #slide-2 {
-      right: 2vw;
-      text-align: left;
-    }
-
-    .slide-image-mask {
-      position: fixed;
-      top: 50%;
-      left: 10vw;
-      transform: translateY(-50%);
-      width: 320px;
-      height: 220px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.8s ease;
-      z-index: 5;
-      pointer-events: none;
-      background: #0f172a;
-    }
-
-    .slide-image-mask.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .slide-image-mask img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    /* Glassmorphism Product & Contact Cards */
     .product-item {
-      margin-bottom: 16px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid rgba(14, 165, 233, 0.15);
+      padding: 20px; margin-bottom: 16px; border-radius: 16px;
+      background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s;
     }
+    .product-item:hover { transform: translateY(-2px); border-color: rgba(2, 132, 199, 0.3); }
 
-    .product-item:last-child {
-      border-bottom: none;
-    }
-
-    .product-item strong {
-      color: #0f172a;
-      font-size: 1.05rem;
-    }
-
-    /* Slide 3 */
-    #slide-3 {
-      left: 2vw;
-    }
-
-    /* Slide 4 Grid Cards */
-    #slide-4 {
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      max-width: 720px;
-    }
-
-    #slide-4.active {
-      transform: translate(-50%, -50%);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 16px;
-      text-align: left;
-    }
-
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
     .contact-card {
-      display: flex;
-      flex-direction: column;
-      padding: 20px 24px;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(14, 165, 233, 0.15);
-      border-radius: 16px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(8px);
+      display: flex; flex-direction: column; gap: 6px; padding: 20px;
+      background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.12); border-radius: 16px;
+      text-decoration: none; color: #111418; transition: all 0.2s ease;
+    }
+    .contact-card:hover { border-color: #0284c7; background: rgba(255, 255, 255, 0.9); }
+    .contact-card span { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-card strong { font-size: 0.95rem; font-weight: 600; word-break: break-all; }
+
+    /* Cyber Terminal Floating Toggle & Modal */
+    .terminal-toggle {
+      position: fixed; bottom: 30px; right: 40px; z-index: 100;
+      background: #111418; color: #10b981; font-family: 'Fira Code', monospace;
+      padding: 10px 18px; border-radius: 100px; border: 1px solid rgba(16, 185, 129, 0.3);
+      font-size: 0.82rem; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+    }
+    .terminal-toggle:hover { background: #0284c7; color: #fff; border-color: #38bdf8; }
+
+    .terminal-modal {
+      position: fixed; bottom: 85px; right: 40px; width: 420px; height: 320px;
+      background: rgba(15, 23, 42, 0.94); backdrop-filter: blur(20px);
+      border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 16px;
+      z-index: 100; display: none; flex-direction: column; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    .terminal-modal.active { display: flex; }
+    .terminal-header {
+      background: rgba(255,255,255,0.05); padding: 10px 16px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #94a3b8;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .terminal-body {
+      flex: 1; padding: 16px; font-family: 'Fira Code', monospace; font-size: 0.8rem;
+      color: #38bdf8; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;
+    }
+    .terminal-input-row { display: flex; gap: 8px; align-items: center; }
+    .terminal-input {
+      background: transparent; border: none; outline: none; color: #f8fafc;
+      font-family: 'Fira Code', monospace; font-size: 0.8rem; width: 100%;
     }
 
-    .contact-card:hover {
-      transform: translateY(-3px);
-      background: #ffffff;
-      border-color: rgba(16, 185, 129, 0.5);
-      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.15);
-    }
-
-    .contact-card span {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #64748b;
-      margin-bottom: 6px;
-    }
-
-    .contact-card strong {
-      color: #0f172a;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    /* Responsive Breakpoints */
+    /* Mobile Adaptations */
     @media (max-width: 768px) {
-      .cinematic-container {
-        padding: 0 24px;
-      }
+      .cinematic-container { padding: 0 24px 24px 24px; }
       .header-nav { display: none; }
-      .mobile-toggle { display: flex; }
-
-      .slide {
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 24px;
-        text-align: left !important;
+      .mobile-toggle {
+        display: flex; flex-direction: column; gap: 5px;
+        background: transparent; border: none; cursor: pointer;
       }
-
-      #slide-1 .desc-row {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      #slide-2-img {
-        display: none;
-      }
-
-      #slide-4 {
-        left: 0 !important;
-        transform: translateY(-50%) !important;
-        text-align: left !important;
-      }
-
-      #slide-4.active {
-        transform: translateY(-50%) !important;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
+      .mobile-toggle span { width: 22px; height: 2px; background: #111418; display: block; }
+      .desc-row { flex-direction: column; gap: 16px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .terminal-modal { width: calc(100vw - 48px); right: 24px; }
     }
   </style>
 
-  <!-- Import Map for Three.js ES Modules -->
   <script type="importmap">
   {
     "imports": {
@@ -574,10 +220,14 @@
   </script>
 </head>
 <body>
+
+  <canvas id="webgl"></canvas>
+
+  <!-- Custom Cursor -->
   <div class="cursor-inner"></div>
   <div class="cursor-outer"></div>
 
-  <!-- Grid & Progress Overlay -->
+  <!-- Overlay Grids -->
   <div class="grid-horizontal-line"></div>
   <div class="grid-lines">
     <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
@@ -588,632 +238,361 @@
       <div class="grid-dot top"></div>
       <div class="grid-dot bottom"></div>
       <div class="story-dashes">
-        <div class="story-dash" data-slide="1"><div class="story-dash-fill" id="dash-fill-1"></div></div>
-        <div class="story-dash" data-slide="2"><div class="story-dash-fill" id="dash-fill-2"></div></div>
-        <div class="story-dash" data-slide="3"><div class="story-dash-fill" id="dash-fill-3"></div></div>
-        <div class="story-dash" data-slide="4"><div class="story-dash-fill" id="dash-fill-4"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-1"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-2"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-3"></div></div>
+        <div class="story-dash"><div class="story-dash-fill" id="dash-fill-4"></div></div>
       </div>
     </div>
   </div>
 
-  <!-- Header Overlay -->
+  <!-- Header -->
+  <div class="main-header">
+    <div class="brand">Faarih<span style="color: #0284c7;">.</span></div>
+    <nav class="header-nav">
+      <a href="#slide-1" class="nav-link">About</a>
+      <span class="nav-dot"></span>
+      <a href="#slide-2" class="nav-link">Products</a>
+      <span class="nav-dot"></span>
+      <a href="#slide-3" class="nav-link">Ecosystem</a>
+      <span class="nav-dot"></span>
+      <a href="#slide-4" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/6285338561880" target="_blank" class="contact-btn">Contact <span class="btn-circle"></span></a>
+      <button class="mobile-toggle" aria-label="Toggle Navigation"><span></span><span></span></button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav-drawer" id="mobileDrawer">
+    <a href="#slide-1" class="mobile-link">01. About</a>
+    <a href="#slide-2" class="mobile-link">02. Products</a>
+    <a href="#slide-3" class="mobile-link">03. Ecosystem</a>
+    <a href="#slide-4" class="mobile-link">04. Contact</a>
+  </div>
+
+  <!-- Slides Content -->
   <div class="cinematic-container">
-    <div class="main-header">
-      <a href="#slide-1" class="brand">Faarih<span style="color: #0284c7;">.</span> <span class="brand-tag">SYS//01</span></a>
-      <nav class="header-nav">
-        <a href="#slide-1" class="nav-link">About</a>
-        <span class="nav-dot"></span>
-        <a href="#slide-2" class="nav-link">Products</a>
-        <span class="nav-dot"></span>
-        <a href="#slide-3" class="nav-link">Ecosystem</a>
-        <span class="nav-dot"></span>
-        <a href="#slide-4" class="nav-link">Contact</a>
-      </nav>
-      <div class="header-actions">
-        <a href="https://wa.me/6285338561880" target="_blank" class="contact-btn">Contact <span class="btn-circle"></span></a>
-        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle Navigation">
-          <span></span><span></span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Drawer -->
-    <div class="mobile-nav-drawer" id="mobile-drawer">
-      <a href="#slide-1" class="mobile-link">01. About</a>
-      <a href="#slide-2" class="mobile-link">02. Products</a>
-      <a href="#slide-3" class="mobile-link">03. Ecosystem</a>
-      <a href="#slide-4" class="mobile-link">04. Contact</a>
-    </div>
-
-    <!-- Slide 1: Profile & Intro -->
     <div class="slide active" id="slide-1">
-      <div class="eyebrow-tag">&gt;_ FOUNDER &amp; CEO — PT FIHLA INOVASI UTAMA</div>
-      <h1 class="slide-title">Lalu Muhammad <br>Faarih As'ad</h1>
+      <div class="eyebrow-tag">// Founder & CEO — PT FIHLA INOVASI UTAMA</div>
+      <h2 class="slide-title" data-original="Lalu Muhammad Faarih As'ad">Lalu Muhammad Faarih As'ad</h2>
       <div class="desc-row">
-        <p class="slide-desc col-1">Building practical digital infrastructure, sovereign protocols, and commercial software for local businesses and creators in Indonesia.</p>
-        <p class="slide-desc col-2">Combining product strategy, legal background (Hukum Keluarga Islam), and technical execution to build scalable, resilient platforms.</p>
+        <p class="slide-desc">Building practical digital infrastructure, sovereign protocols, and commercial software for local businesses and creators in Indonesia.</p>
+        <p class="slide-desc">Combining product strategy, legal background (Hukum Keluarga Islam), and technical execution to build scalable, resilient platforms.</p>
       </div>
     </div>
 
-    <!-- Slide 2 Mask & Slide 2: Primary Products -->
-    <div class="slide-image-mask" id="slide-2-img">
-      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Fihla Infrastructure Ecosystem" onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Fihla+Architecture'">
-    </div>
     <div class="slide" id="slide-2">
-      <div class="eyebrow-tag">[CORE_SYSTEMS] Flagship Infrastructure</div>
-      <h2 class="slide-title">Sovereign <br>Products</h2>
+      <div class="eyebrow-tag">// Flagship Sovereign Infrastructure</div>
+      <h2 class="slide-title" data-original="Sovereign Products">Sovereign Products</h2>
       <div class="slide-desc">
         <div class="product-item">
-          <strong>FSI (Fihla Sovereign Infrastructure)</strong><br>
-          Zero-knowledge cryptographic asset protocol using SHA-256 time-locks & hardware binding. (fsi.fihla.id)
+          <strong style="color:#0284c7;">FSI (Fihla Sovereign Infrastructure)</strong><br>
+          Zero-knowledge cryptographic asset protocol using SHA-256 time-locks & hardware binding. <em>(fsi.fihla.id)</em>
         </div>
         <div class="product-item">
-          <strong>Tepatin</strong><br>
-          Digital appointment commitment protocol with automated deposit escrow & penalty enforcement. (tepatin.my.id)
+          <strong style="color:#0284c7;">Tepatin</strong><br>
+          Digital appointment commitment protocol with automated deposit escrow & penalty enforcement. <em>(tepatin.my.id)</em>
         </div>
       </div>
     </div>
 
-    <!-- Slide 3: Complete Ventures & Ecosystem -->
     <div class="slide" id="slide-3">
-      <div class="eyebrow-tag">[NODE_NETWORK] Ventures &amp; Ecosystem</div>
-      <h2 class="slide-title">Digital <br>Ecosystem</h2>
+      <div class="eyebrow-tag">// Ventures & Ecosystem</div>
+      <h2 class="slide-title" data-original="Digital Ecosystem">Digital Ecosystem</h2>
       <div class="slide-desc">
-        <div class="product-item">
-          <strong>Wargakas</strong> — Financial portal software for organizations (saad.fihla.id).
-        </div>
-        <div class="product-item">
-          <strong>Pasarpixel & Studio</strong> — Digital product marketplace (store.fihla.id) & agency studio (studio.fihla.id).
-        </div>
-        <div class="product-item">
-          <strong>Fihla Legal Clinic</strong> — Non-litigation legal mediation platform for estate & property division in Lombok Timur.
-        </div>
+        <div class="product-item"><strong>Wargakas</strong> — Financial portal software for organizations <em>(saad.fihla.id)</em>.</div>
+        <div class="product-item"><strong>Pasarpixel & Studio</strong> — Digital product marketplace <em>(store.fihla.id)</em> & agency studio <em>(studio.fihla.id)</em>.</div>
+        <div class="product-item"><strong>Fihla Legal Clinic</strong> — Non-litigation legal mediation platform for estate & property division.</div>
       </div>
     </div>
 
-    <!-- Slide 4: Full Contact Details -->
     <div class="slide" id="slide-4">
-      <div class="eyebrow-tag">// DIRECT_COMMUNICATION</div>
-      <h2 class="slide-title">Get in <br>Touch</h2>
+      <div class="eyebrow-tag">// Direct Connections</div>
+      <h2 class="slide-title" data-original="Get in Touch">Get in Touch</h2>
       <div class="slide-desc contact-grid">
-        <a href="https://wa.me/6285338561880" target="_blank" class="contact-card">
-          <span>WhatsApp</span>
-          <strong>+62 853-3856-1880</strong>
-        </a>
-        <a href="mailto:lalufarih46@gmail.com" class="contact-card">
-          <span>Email</span>
-          <strong>lalufarih46@gmail.com</strong>
-        </a>
-        <a href="https://t.me/imfaarih" target="_blank" class="contact-card">
-          <span>Telegram</span>
-          <strong>@imfaarih</strong>
-        </a>
-        <a href="https://www.instagram.com/imfaarih" target="_blank" class="contact-card">
-          <span>Instagram</span>
-          <strong>@imfaarih</strong>
-        </a>
+        <a href="https://wa.me/6285338561880" target="_blank" class="contact-card"><span>WhatsApp</span><strong>+62 853-3856-1880</strong></a>
+        <a href="mailto:lalufarih46@gmail.com" class="contact-card"><span>Email</span><strong>lalufarih46@gmail.com</strong></a>
+        <a href="https://t.me/imfaarih" target="_blank" class="contact-card"><span>Telegram</span><strong>@imfaarih</strong></a>
+        <a href="https://www.instagram.com/imfaarih" target="_blank" class="contact-card"><span>Instagram</span><strong>@imfaarih</strong></a>
       </div>
     </div>
   </div>
 
-  <canvas id="webgl"></canvas>
+  <!-- Cyber Terminal -->
+  <button class="terminal-toggle" id="termToggle">[TERMINAL]</button>
+  <div class="terminal-modal" id="termModal">
+    <div class="terminal-header">
+      <span>FIHLA_SOVEREIGN_CLI_v2.0</span>
+      <span style="color:#10b981;">● ONLINE</span>
+    </div>
+    <div class="terminal-body" id="termBody">
+      <div>Type <span style="color:#f59e0b;">'help'</span> for available commands.</div>
+    </div>
+    <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08);">
+      <div class="terminal-input-row">
+        <span style="color:#10b981;">&gt;</span>
+        <input type="text" class="terminal-input" id="termInput" placeholder="Enter command..." autocomplete="off">
+      </div>
+    </div>
+  </div>
 
+  <!-- Three.js Module Logic -->
   <script type="module">
     import * as THREE from 'three';
 
-    // Custom Cursor
-    const cursorInner = document.querySelector('.cursor-inner');
-    const cursorOuter = document.querySelector('.cursor-outer');
-
-    document.addEventListener('mousemove', (e) => {
-      cursorInner.style.left = `${e.clientX}px`;
-      cursorInner.style.top = `${e.clientY}px`;
-      cursorOuter.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
-
-    document.querySelectorAll('a, button, .story-dash').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
-    // Mobile Drawer Toggle
-    const mobileToggle = document.getElementById('mobile-toggle-btn');
-    const mobileDrawer = document.getElementById('mobile-drawer');
-
-    mobileToggle.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.mobile-link, .nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        mobileDrawer.classList.remove('active');
-        const targetId = link.getAttribute('href');
-        if (targetId && targetId.startsWith('#')) {
-          e.preventDefault();
-          const targetSlideNum = parseInt(targetId.replace('#slide-', ''));
-          const scrollTarget = (targetSlideNum - 1) * 0.28 * (document.body.scrollHeight - window.innerHeight);
-          window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
-        }
-      });
-    });
-
-    // WebGL Canvas & Scene Setup
+    // --- Scene Setup ---
     const canvas = document.getElementById('webgl');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8f9fb');
-    scene.fog = new THREE.FogExp2('#f8f9fb', 0.005);
+    scene.fog = new THREE.FogExp2('#f8f9fb', 0.012);
 
     const isMobile = window.innerWidth <= 768;
     const camera = new THREE.PerspectiveCamera(isMobile ? 65 : 50, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.set(0, 0.5, isMobile ? 5.2 : 4.0);
-    scene.add(camera);
+    camera.position.set(0, 0.5, isMobile ? 6.5 : 5.0);
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // Studio Lighting for High-Tech Holographic Feel
-    const ambientLight = new THREE.AmbientLight('#ffffff', 1.6);
-    scene.add(ambientLight);
+    // --- Cybernetic Solar System Object Group ---
+    const cyberSystemGroup = new THREE.Group();
+    scene.add(cyberSystemGroup);
 
-    const cyberCoreLight = new THREE.PointLight('#0284c7', 40.0, 25);
-    cyberCoreLight.position.set(0, 0, 0);
-    scene.add(cyberCoreLight);
+    // 1. Cyber Core (Sun)
+    const sunGeo = new THREE.IcosahedronGeometry(0.8, 2);
+    const sunMat = new THREE.MeshBasicMaterial({ color: #0284c7, wireframe: true });
+    const cyberSun = new THREE.Mesh(sunGeo, sunMat);
+    cyberSystemGroup.add(cyberSun);
 
-    const matrixEmeraldLight = new THREE.PointLight('#10b981', 25.0, 20);
-    matrixEmeraldLight.position.set(2, 3, 2);
-    scene.add(matrixEmeraldLight);
+    const coreInnerGeo = new THREE.SphereGeometry(0.5, 16, 16);
+    const coreInnerMat = new THREE.MeshBasicMaterial({ color: #38bdf8 });
+    const coreInner = new THREE.Mesh(coreInnerGeo, coreInnerMat);
+    cyberSystemGroup.add(coreInner);
 
-    const cyanRimLight = new THREE.DirectionalLight('#38bdf8', 6.0);
-    cyanRimLight.position.set(-5, 6, -3);
-    scene.add(cyanRimLight);
-
-    // Background Wave Shader
-    const waveUniforms = {
-      uTime: { value: 0 },
-      uScrollProgress: { value: 0 }
-    };
-
-    const waveMaterial = new THREE.ShaderMaterial({
-      uniforms: waveUniforms,
-      vertexShader: `
-        varying vec2 vUv;
-        void main() {
-          vUv = uv;
-          gl_Position = vec4(position, 1.0);
-        }
-      `,
-      fragmentShader: `
-        uniform float uTime;
-        uniform float uScrollProgress;
-        varying vec2 vUv;
-
-        void main() {
-          vec2 uv = vUv;
-          float wave = sin(uv.x * 6.0 + uTime * 0.5) * cos(uv.y * 6.0 + uTime * 0.4) * 0.04;
-          
-          vec3 topColor = mix(vec3(0.96, 0.98, 1.0), vec3(0.90, 0.96, 0.98), uScrollProgress);
-          vec3 bottomColor = mix(vec3(0.98, 0.99, 1.0), vec3(0.88, 0.95, 0.94), uScrollProgress);
-          
-          vec3 finalColor = mix(topColor, bottomColor, uv.y + wave);
-          gl_FragColor = vec4(finalColor, 0.55);
-        }
-      `,
-      transparent: true,
-      depthWrite: false
-    });
-
-    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), waveMaterial);
-    scene.add(quad);
-
-    const galaxyPivot = new THREE.Group();
-    galaxyPivot.rotation.x = 0.38;
-    galaxyPivot.rotation.z = -0.15;
-    scene.add(galaxyPivot);
-
-    // 1. Cyber Core (Geodesic Matrix Sun)
-    const coreGroup = new THREE.Group();
-    galaxyPivot.add(coreGroup);
-
-    // Inner glowing sphere
-    const innerCoreGeo = new THREE.IcosahedronGeometry(isMobile ? 0.38 : 0.46, 3);
-    const innerCoreMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#0284c7'),
-      emissive: new THREE.Color('#0284c7'),
-      emissiveIntensity: 1.6,
-      roughness: 0.1,
-      metalness: 0.9,
-      wireframe: false
-    });
-    const innerCoreMesh = new THREE.Mesh(innerCoreGeo, innerCoreMat);
-    coreGroup.add(innerCoreMesh);
-
-    // Outer Geodesic Wireframe Shell
-    const outerGeo = new THREE.IcosahedronGeometry(isMobile ? 0.52 : 0.62, 2);
-    const outerMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color('#10b981'),
-      wireframe: true,
-      transparent: true,
-      opacity: 0.65
-    });
-    const outerCoreMesh = new THREE.Mesh(outerGeo, outerMat);
-    coreGroup.add(outerCoreMesh);
-
-    // Rotating Concentric Holographic HUD Rings
-    const hudRings = [];
-    const ringRadii = [0.7, 0.85, 1.0];
-    const ringColors = ['#0284c7', '#10b981', '#38bdf8'];
-
-    ringRadii.forEach((r, idx) => {
-      const ringGeo = new THREE.RingGeometry(r, r + 0.02, 64);
-      const ringMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(ringColors[idx]),
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.45,
-        wireframe: idx % 2 === 0
-      });
-      const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-      ringMesh.rotation.x = Math.PI / 2 + (idx * 0.2);
-      ringMesh.rotation.y = idx * 0.3;
-      coreGroup.add(ringMesh);
-
-      hudRings.push({ mesh: ringMesh, speed: (idx + 1) * 0.008 * (idx % 2 === 0 ? 1 : -1) });
-    });
-
-    // 2. Cybernetic Planetary Orbits
+    // 2. Planets & Orbits
     const planets = [];
-    const planetConfigs = [
-      { radius: 0.14, distance: 1.2, color: '#38bdf8', wireColor: '#0284c7', speed: 1.1, rotSpeed: 0.02, type: 'wireframe' },
-      { radius: 0.19, distance: 1.8, color: '#10b981', wireColor: '#059669', speed: 0.75, rotSpeed: 0.015, type: 'layered', hasMoon: true },
-      { radius: 0.25, distance: 2.5, color: '#0284c7', wireColor: '#38bdf8', speed: 0.5, rotSpeed: 0.025, type: 'saturn', ringInner: 0.32, ringOuter: 0.58 },
-      { radius: 0.16, distance: 3.2, color: '#6366f1', wireColor: '#818cf8', speed: 0.35, rotSpeed: 0.018, type: 'data' }
-    ];
+    const orbitSpeeds = [0.015, 0.008, 0.005];
+    const orbitRadii = [1.8, 2.8, 3.8];
+    const planetColors = [#0284c7, #10b981, #0284c7];
 
-    const planetMeshesForNetwork = [];
+    orbitRadii.forEach((radius, i) => {
+      // Orbit Line
+      const orbitGeo = new THREE.RingGeometry(radius - 0.01, radius + 0.01, 64);
+      const orbitMat = new THREE.MeshBasicMaterial({ color: #0284c7, side: THREE.DoubleSide, transparent: true, opacity: 0.15 });
+      const orbitMesh = new THREE.Mesh(orbitGeo, orbitMat);
+      orbitMesh.rotation.x = Math.PI / 2;
+      cyberSystemGroup.add(orbitMesh);
 
-    planetConfigs.forEach((cfg) => {
-      // Dashed Vector Orbit Line
-      const orbitCurve = new THREE.EllipseCurve(0, 0, cfg.distance, cfg.distance, 0, 2 * Math.PI, false, 0);
-      const points = orbitCurve.getPoints(120);
-      const orbitGeo = new THREE.BufferGeometry().setFromPoints(points.map(p => new THREE.Vector3(p.x, 0, p.y)));
-      const orbitMat = new THREE.LineDashedMaterial({
-        color: new THREE.Color('#0284c7'),
-        transparent: true,
-        opacity: 0.3,
-        dashSize: 0.1,
-        gapSize: 0.05
-      });
-      const orbitLine = new THREE.LineLoop(orbitGeo, orbitMat);
-      orbitLine.computeLineDistances();
-      galaxyPivot.add(orbitLine);
+      // Planet Mesh
+      const pGeo = new THREE.IcosahedronGeometry(0.2 + i * 0.05, 1);
+      const pMat = new THREE.MeshBasicMaterial({ color: planetColors[i], wireframe: true });
+      const planetMesh = new THREE.Mesh(pGeo, pMat);
+      
+      const pPivot = new THREE.Group();
+      pPivot.add(planetMesh);
+      planetMesh.position.x = radius;
+      cyberSystemGroup.add(pPivot);
 
-      // Cyber Planet Container
-      const planetPivot = new THREE.Group();
-
-      // Planet Solid Core
-      const pCoreGeo = new THREE.SphereGeometry(cfg.radius * 0.85, 16, 16);
-      const pCoreMat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(cfg.color),
-        emissive: new THREE.Color(cfg.color),
-        emissiveIntensity: 0.8,
-        roughness: 0.2,
-        metalness: 0.8
-      });
-      const pCoreMesh = new THREE.Mesh(pCoreGeo, pCoreMat);
-      planetPivot.add(pCoreMesh);
-
-      // Planet Low-Poly Cyber Wireframe Outer Shell
-      const pWireGeo = new THREE.IcosahedronGeometry(cfg.radius, 1);
-      const pWireMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color(cfg.wireColor),
-        wireframe: true,
-        transparent: true,
-        opacity: 0.75
-      });
-      const pWireMesh = new THREE.Mesh(pWireGeo, pWireMat);
-      planetPivot.add(pWireMesh);
-
-      // Saturn Style Digital Data Ring
-      if (cfg.type === 'saturn') {
-        const ringGeo = new THREE.RingGeometry(cfg.ringInner, cfg.ringOuter, 24);
-        const ringMat = new THREE.MeshBasicMaterial({
-          color: new THREE.Color('#10b981'),
-          side: THREE.DoubleSide,
-          transparent: true,
-          opacity: 0.7,
-          wireframe: true
-        });
-        const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-        ringMesh.rotation.x = Math.PI / 2.3;
-        planetPivot.add(ringMesh);
-      }
-
-      // Cyber Moon
-      let moonMesh = null;
-      if (cfg.hasMoon) {
-        const mGeo = new THREE.IcosahedronGeometry(0.045, 1);
-        const mMat = new THREE.MeshBasicMaterial({
-          color: new THREE.Color('#38bdf8'),
-          wireframe: true
-        });
-        moonMesh = new THREE.Mesh(mGeo, mMat);
-        planetPivot.add(moonMesh);
-      }
-
-      galaxyPivot.add(planetPivot);
-      planetMeshesForNetwork.push(planetPivot);
-
-      planets.push({
-        pivot: planetPivot,
-        wire: pWireMesh,
-        moon: moonMesh,
-        distance: cfg.distance,
-        speed: cfg.speed,
-        rotSpeed: cfg.rotSpeed,
-        angle: Math.random() * Math.PI * 2
-      });
+      planets.push({ pivot: pPivot, mesh: planetMesh, speed: orbitSpeeds[i] });
     });
 
-    // 3. Digital Constellation HUD Vector Connections (Lines connecting planets like network nodes)
-    const maxLines = 10;
-    const constellationGeo = new THREE.BufferGeometry();
-    const constellationPositions = new Float32Array(maxLines * 6);
-    const constellationMat = new THREE.LineBasicMaterial({
-      color: new THREE.Color('#10b981'),
-      transparent: true,
-      opacity: 0.35
-    });
-    const constellationLines = new THREE.LineSegments(constellationGeo, constellationMat);
-    galaxyPivot.add(constellationLines);
+    // 3. Matrix Galaxy Particles
+    const particleCount = 1200;
+    const pGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const colors = new Float32Array(particleCount * 3);
 
-    // 4. Matrix Code Streams & Cyber Particle Spiral Galaxy Arms
-    const particleCount = isMobile ? 1400 : 2500;
-    const particleGeo = new THREE.BufferGeometry();
-    const particlePos = new Float32Array(particleCount * 3);
-    const particleCol = new Float32Array(particleCount * 3);
+    const color1 = new THREE.Color(#0284c7);
+    const color2 = new THREE.Color(#10b981);
 
-    const cNeonCyan = new THREE.Color('#38bdf8');
-    const cDeepSky = new THREE.Color('#0284c7');
-    const cMatrixEmerald = new THREE.Color('#10b981');
-    const cIndigo = new THREE.Color('#6366f1');
-
-    const arms = 3;
     for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3;
-      const radius = Math.random() * 4.4 + 0.3;
-      const spinAngle = radius * 1.6;
-      const branchAngle = ((i % arms) * 2 * Math.PI) / arms;
+      const r = Math.random() * 5.5 + 0.5;
+      const theta = Math.random() * Math.PI * 2;
+      
+      positions[i * 3] = Math.cos(theta) * r;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 1.5;
+      positions[i * 3 + 2] = Math.sin(theta) * r;
 
-      const randomX = (Math.random() - 0.5) * 0.45;
-      const randomY = (Math.random() - 0.5) * 0.4;
-      const randomZ = (Math.random() - 0.5) * 0.45;
-
-      particlePos[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
-      particlePos[i3 + 1] = randomY;
-      particlePos[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
-
-      const mixRatio = radius / 4.4;
-      let pColor;
-      if (mixRatio < 0.3) {
-        pColor = cMatrixEmerald;
-      } else if (mixRatio < 0.65) {
-        pColor = cNeonCyan;
-      } else if (mixRatio < 0.85) {
-        pColor = cDeepSky;
-      } else {
-        pColor = cIndigo;
-      }
-
-      particleCol[i3] = pColor.r;
-      particleCol[i3 + 1] = pColor.g;
-      particleCol[i3 + 2] = pColor.b;
+      const mixedColor = color1.clone().lerp(color2, Math.random());
+      colors[i * 3] = mixedColor.r;
+      colors[i * 3 + 1] = mixedColor.g;
+      colors[i * 3 + 2] = mixedColor.b;
     }
 
-    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
-    particleGeo.setAttribute('color', new THREE.BufferAttribute(particleCol, 3));
+    pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    const particleMat = new THREE.PointsMaterial({
-      size: isMobile ? 0.035 : 0.045,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending
+    const pMat = new THREE.PointsMaterial({
+      size: 0.035, vertexColors: true, transparent: true, opacity: 0.7
+    });
+    const galaxyParticles = new THREE.Points(pGeo, pMat);
+    cyberSystemGroup.add(galaxyParticles);
+
+    // --- Interactive Mouse & Scroll Logic ---
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
+
+      // Custom Cursor Movement
+      document.querySelector('.cursor-inner').style.left = e.clientX + 'px';
+      document.querySelector('.cursor-inner').style.top = e.clientY + 'px';
+      document.querySelector('.cursor-outer').style.left = e.clientX + 'px';
+      document.querySelector('.cursor-outer').style.top = e.clientY + 'px';
     });
 
-    const galaxyParticles = new THREE.Points(particleGeo, particleMat);
-    galaxyPivot.add(galaxyParticles);
+    let currentScroll = 0;
+    window.addEventListener('scroll', () => {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      currentScroll = window.scrollY / maxScroll;
 
-    // Vertical Matrix Rain Column Particles
-    const matrixCount = isMobile ? 300 : 600;
-    const matrixGeo = new THREE.BufferGeometry();
-    const matrixPos = new Float32Array(matrixCount * 3);
-
-    for (let i = 0; i < matrixCount; i++) {
-      const i3 = i * 3;
-      matrixPos[i3] = (Math.random() - 0.5) * 8.0;
-      matrixPos[i3 + 1] = (Math.random() - 0.5) * 6.0;
-      matrixPos[i3 + 2] = (Math.random() - 0.5) * 8.0;
-    }
-
-    matrixGeo.setAttribute('position', new THREE.BufferAttribute(matrixPos, 3));
-    const matrixMat = new THREE.PointsMaterial({
-      size: 0.03,
-      color: new THREE.Color('#10b981'),
-      transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending
-    });
-    const matrixParticles = new THREE.Points(matrixGeo, matrixMat);
-    galaxyPivot.add(matrixParticles);
-
-    galaxyPivot.position.y = isMobile ? -0.1 : -0.2;
-
-    let scrollProgress = 0;
-    const slides = [
-      document.getElementById('slide-1'),
-      document.getElementById('slide-2'),
-      document.getElementById('slide-3'),
-      document.getElementById('slide-4')
-    ];
-    const slideMask = document.getElementById('slide-2-img');
-    const fills = [
-      document.getElementById('dash-fill-1'),
-      document.getElementById('dash-fill-2'),
-      document.getElementById('dash-fill-3'),
-      document.getElementById('dash-fill-4')
-    ];
-
-    function handleScroll() {
-      const maxScroll = document.body.scrollHeight - window.innerHeight;
-      scrollProgress = Math.min(Math.max(window.scrollY / maxScroll, 0), 1);
-
-      waveUniforms.uScrollProgress.value = scrollProgress;
-
-      // Update story progress dashes
-      for (let i = 0; i < 4; i++) {
-        const start = i * 0.25;
-        const end = (i + 1) * 0.25;
-        if (scrollProgress >= end) {
-          fills[i].style.height = '100%';
-        } else if (scrollProgress <= start) {
-          fills[i].style.height = '0%';
+      // Active Slide Switcher
+      const slideIndex = Math.min(3, Math.floor(currentScroll * 4));
+      document.querySelectorAll('.slide').forEach((slide, i) => {
+        if (i === slideIndex) {
+          if (!slide.classList.contains('active')) {
+            slide.classList.add('active');
+            triggerGlitch(slide.querySelector('.slide-title'));
+          }
         } else {
-          const localProgress = (scrollProgress - start) / 0.25;
-          fills[i].style.height = `${localProgress * 100}%`;
-        }
-      }
-
-      // Slide Visibility Thresholds
-      const activeIndex = Math.min(Math.floor(scrollProgress / 0.25), 3);
-      slides.forEach((s, idx) => {
-        if (idx === activeIndex) {
-          s.classList.add('active');
-        } else {
-          s.classList.remove('active');
+          slide.classList.remove('active');
         }
       });
 
-      if (activeIndex === 1) {
-        slideMask.classList.add('active');
-      } else {
-        slideMask.classList.remove('active');
+      // Progress Dashes
+      for (let i = 1; i <= 4; i++) {
+        const fill = document.getElementById(`dash-fill-${i}`);
+        if (currentScroll >= (i - 1) * 0.25) {
+          fill.style.height = Math.min(100, ((currentScroll - (i - 1) * 0.25) / 0.25) * 100) + '%';
+        } else {
+          fill.style.height = '0%';
+        }
       }
+    });
+
+    // Scramble Text Glitch Function
+    function triggerGlitch(element) {
+      if (!element) return;
+      const originalText = element.getAttribute('data-original');
+      const chars = '01#_$%&@X*?';
+      let iterations = 0;
+
+      const interval = setInterval(() => {
+        element.innerText = originalText.split('').map((char, index) => {
+          if (index < iterations) return originalText[index];
+          return chars[Math.floor(Math.random() * chars.length)];
+        }).join('');
+
+        if (iterations >= originalText.length) clearInterval(interval);
+        iterations += 1 / 2;
+      }, 30);
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    // Click on progress dash to jump
-    document.querySelectorAll('.story-dash').forEach((dash, idx) => {
-      dash.addEventListener('click', () => {
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
-        window.scrollTo({ top: idx * 0.25 * maxScroll, behavior: 'smooth' });
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      const mobileCheck = window.innerWidth <= 768;
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.fov = mobileCheck ? 65 : 50;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-
+    // --- Animation Loop ---
     const clock = new THREE.Clock();
 
     function animate() {
       requestAnimationFrame(animate);
+      const delta = clock.getDelta();
 
-      const elapsedTime = clock.getElapsedTime();
-      waveUniforms.uTime.value = elapsedTime;
+      // Rotate Sun Core
+      cyberSun.rotation.y += 0.005;
+      cyberSun.rotation.x += 0.002;
 
-      // Rotate Cyber Sun Core Components
-      innerCoreMesh.rotation.y = elapsedTime * 0.3;
-      outerCoreMesh.rotation.y = -elapsedTime * 0.25;
-      outerCoreMesh.rotation.x = Math.sin(elapsedTime * 0.2) * 0.25;
-
-      hudRings.forEach(r => {
-        r.mesh.rotation.z += r.speed;
+      // Orbit Planets
+      planets.forEach(p => {
+        p.pivot.rotation.y += p.speed;
+        p.mesh.rotation.y += 0.02;
       });
 
-      // Orbit Cyber Planets & Update Positions
-      planets.forEach((p) => {
-        p.angle += 0.005 * p.speed;
-        p.pivot.position.x = Math.cos(p.angle) * p.distance;
-        p.pivot.position.z = Math.sin(p.angle) * p.distance;
+      // Galaxy Particles Slow Drift
+      galaxyParticles.rotation.y += 0.0008;
 
-        p.wire.rotation.y += p.rotSpeed;
-        p.wire.rotation.x += p.rotSpeed * 0.5;
+      // Scroll-driven Camera Orbit
+      const orbitAngle = currentScroll * Math.PI * 2;
+      const radius = isMobile ? 6.5 : 5.0;
+      camera.position.x = Math.sin(orbitAngle) * radius + (mouseX * 0.5);
+      camera.position.z = Math.cos(orbitAngle) * radius + (mouseY * 0.5);
+      camera.position.y = Math.sin(currentScroll * Math.PI) * 1.5 + 0.5;
 
-        if (p.moon) {
-          const moonAngle = elapsedTime * 2.8;
-          p.moon.position.x = Math.cos(moonAngle) * 0.32;
-          p.moon.position.z = Math.sin(moonAngle) * 0.32;
-        }
-      });
-
-      // Update Constellation Lines connecting planets
-      const linePositions = new Float32Array(maxLines * 6);
-      let lineIdx = 0;
-      for (let i = 0; i < planets.length; i++) {
-        for (let j = i + 1; j < planets.length; j++) {
-          if (lineIdx < maxLines * 6) {
-            const posA = planets[i].pivot.position;
-            const posB = planets[j].pivot.position;
-            linePositions[lineIdx++] = posA.x;
-            linePositions[lineIdx++] = posA.y;
-            linePositions[lineIdx++] = posA.z;
-            linePositions[lineIdx++] = posB.x;
-            linePositions[lineIdx++] = posB.y;
-            linePositions[lineIdx++] = posB.z;
-          }
-        }
-      }
-      constellationGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-
-      // Rotate Galaxy Particles
-      galaxyParticles.rotation.y = elapsedTime * 0.04 + scrollProgress * Math.PI * 2;
-
-      // Animate Matrix Rain Droplets Downwards
-      const matPos = matrixGeo.attributes.position.array;
-      for (let i = 0; i < matrixCount; i++) {
-        const i3 = i * 3 + 1;
-        matPos[i3] -= 0.015;
-        if (matPos[i3] < -3.0) {
-          matPos[i3] = 3.0;
-        }
-      }
-      matrixGeo.attributes.position.needsUpdate = true;
-
-      // Camera 360-degree orbital flight path around the Cyber Solar System
-      const orbitAngle = scrollProgress * Math.PI * 2;
-      const radius = isMobile ? 5.2 : 3.8;
-
-      const targetX = Math.sin(orbitAngle) * radius;
-      const targetZ = Math.cos(orbitAngle) * radius;
-      const targetY = 0.4 + Math.sin(scrollProgress * Math.PI * 3) * 0.5;
-
-      // Smooth camera interpolation
-      camera.position.x += (targetX - camera.position.x) * 0.04;
-      camera.position.y += (targetY - camera.position.y) * 0.04;
-      camera.position.z += (targetZ - camera.position.z) * 0.04;
-
-      // Mobile vs Desktop framing alignment
-      const mobileCheck = window.innerWidth <= 768;
-      const transitionProgress = Math.min(1.0, scrollProgress / 0.28);
-      const easeFactor = (Math.cos(transitionProgress * Math.PI) + 1.0) * 0.5;
-      const lookAtXOffset = mobileCheck ? 0 : (-0.9 * easeFactor);
-
-      camera.lookAt(new THREE.Vector3(lookAtXOffset, mobileCheck ? 0 : -0.15, 0));
-
+      camera.lookAt(0, 0, 0);
       renderer.render(scene, camera);
     }
+    animate();
 
-    window.onload = function() {
-      handleScroll();
-      animate();
-    };
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Mobile Drawer Navigation
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    mobileToggle.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('active');
+    });
+
+    // Cyber Terminal Execution Logic
+    const termToggle = document.getElementById('termToggle');
+    const termModal = document.getElementById('termModal');
+    const termInput = document.getElementById('termInput');
+    const termBody = document.getElementById('termBody');
+
+    termToggle.addEventListener('click', () => {
+      termModal.classList.toggle('active');
+      if (termModal.classList.contains('active')) termInput.focus();
+    });
+
+    termInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = termInput.value.trim().toLowerCase();
+        termInput.value = '';
+
+        const line = document.createElement('div');
+        line.innerHTML = `<span style="color:#10b981;">&gt; ${cmd}</span>`;
+        termBody.appendChild(line);
+
+        const reply = document.createElement('div');
+        reply.style.color = '#94a3b8';
+
+        switch (cmd) {
+          case 'help':
+            reply.innerHTML = 'Commands: <span style="color:#38bdf8;">about, products, ecosystem, contact, whoami, clear, exit</span>';
+            break;
+          case 'about':
+            reply.innerText = "Lalu Muhammad Faarih As'ad — Founder & CEO PT FIHLA INOVASI UTAMA.";
+            break;
+          case 'products':
+            reply.innerText = "Flagship: FSI (fsi.fihla.id), Tepatin (tepatin.my.id).";
+            break;
+          case 'ecosystem':
+            reply.innerText = "Ventures: Wargakas, Pasarpixel, Studio, Fihla Legal Clinic.";
+            break;
+          case 'contact':
+            reply.innerText = "WhatsApp: +62 853-3856-1880 | Email: lalufarih46@gmail.com";
+            break;
+          case 'whoami':
+            reply.innerText = "Guest User [Access Granted: Sovereign Node]";
+            break;
+          case 'clear':
+            termBody.innerHTML = '';
+            return;
+          case 'exit':
+            termModal.classList.remove('active');
+            return;
+          default:
+            reply.innerHTML = `<span style="color:#ef4444;">Command not found. Type 'help'.</span>`;
+        }
+        termBody.appendChild(reply);
+        termBody.scrollTop = termBody.scrollHeight;
+      }
+    });
   </script>
 </body>
 </html>
