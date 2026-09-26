@@ -39,7 +39,7 @@
       pointer-events: none;
     }
 
-    /* Custom Cursor Elements */
+    /* Custom Cursor */
     .cursor-inner {
       position: fixed; top: 0; left: 0; width: 8px; height: 8px;
       background-color: #0284c7; border-radius: 50%;
@@ -53,7 +53,7 @@
       transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s;
     }
 
-    /* Grid Lines & Story Progress */
+    /* Grid Lines & Progress Bars */
     .grid-lines {
       position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
       z-index: 2; pointer-events: none; display: flex; justify-content: space-between;
@@ -81,13 +81,13 @@
     .story-dash { width: 3px; height: 32px; background: rgba(0, 0, 0, 0.08); border-radius: 2px; overflow: hidden; }
     .story-dash-fill { width: 100%; height: 0%; background: #0284c7; transition: height 0.1s linear; }
 
-    /* Main Container Shell */
+    /* Shell Container */
     .cinematic-container {
       position: relative; z-index: 10; width: 100%; max-width: 1400px;
       margin: 0 auto; padding: 0 40px 40px 40px; pointer-events: none;
     }
 
-    /* Header & Navigation */
+    /* Header Navigation */
     .main-header {
       position: fixed; top: 0; left: 0; width: 100%;
       padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
@@ -118,7 +118,7 @@
       transition: transform 0.2s, opacity 0.2s;
     }
 
-    /* Mobile Drawer */
+    /* Mobile Navigation Drawer */
     .mobile-nav-drawer {
       position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
       background: rgba(248, 249, 251, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
@@ -134,7 +134,7 @@
       cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
 
-    /* Slide Cards */
+    /* Slide Cards Setup */
     .slide {
       position: fixed; top: 52%; transform: translateY(-50%);
       width: 100%; max-width: 680px; opacity: 0; pointer-events: none;
@@ -153,22 +153,38 @@
     .desc-row { display: flex; gap: 20px; }
     .slide-desc { font-size: 1rem; line-height: 1.6; color: #475569; font-weight: 400; }
 
-    /* Glassmorphic Product & Contact Cards */
+    /* Glassmorphic Product Cards */
+    .product-list { display: flex; flex-direction: column; gap: 12px; width: 100%; }
     .product-item {
-      padding: 16px 20px; margin-bottom: 12px; border-radius: 14px;
-      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(2, 132, 199, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+      position: relative; padding: 18px 20px; border-radius: 16px;
+      background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.18); border-left: 3.5px solid #0284c7;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s;
     }
+    .product-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .product-title { font-size: 1.05rem; font-weight: 700; color: #0f172a; }
+    .product-tag {
+      font-family: 'Fira Code', monospace; font-size: 0.68rem; padding: 2px 8px;
+      border-radius: 6px; background: rgba(2, 132, 199, 0.1); color: #0284c7; font-weight: 600;
+    }
+    .product-body { font-size: 0.88rem; line-height: 1.5; color: #475569; margin-bottom: 6px; }
+    .product-link { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #0284c7; font-weight: 500; }
+
+    /* Glassmorphic Contact Grid Cards */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
     .contact-card {
-      display: flex; flex-direction: column; gap: 4px; padding: 16px 18px;
-      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(2, 132, 199, 0.15); border-radius: 14px; text-decoration: none; color: #111418;
+      display: flex; justify-content: space-between; align-items: center; padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.18); border-radius: 16px; text-decoration: none; color: #111418;
+      transition: all 0.2s ease;
     }
-    .contact-card span { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-    .contact-card strong { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
+    .contact-info { display: flex; flex-direction: column; gap: 3px; }
+    .contact-card span { font-size: 0.72rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+    .contact-card strong { font-size: 0.88rem; font-weight: 600; word-break: break-all; color: #0f172a; }
+    .contact-arrow { font-size: 1.1rem; color: #0284c7; opacity: 0.6; transition: transform 0.2s, opacity 0.2s; }
+    .contact-card:hover .contact-arrow { transform: translateX(3px); opacity: 1; }
 
-    /* Terminal CLI Component */
+    /* Cyber Terminal CLI */
     .terminal-toggle {
       position: fixed; bottom: 28px; right: 40px; z-index: 10000;
       background: #111418; color: #10b981; font-family: 'Fira Code', monospace;
@@ -202,20 +218,28 @@
       font-family: 'Fira Code', monospace; font-size: 0.78rem; width: 100%;
     }
 
-    /* Mobile Layout Adaptations */
+    /* Refined Mobile Adaptations */
     @media (max-width: 768px) {
-      .main-header { padding: 16px 20px; }
+      .main-header { padding: 14px 20px; }
       .grid-lines { padding: 0 16px; }
-      .cinematic-container { padding: 0 20px; }
+      .cinematic-container { padding: 0 16px; }
       
       .header-nav { display: none; }
       .mobile-toggle { display: block; }
       
       .slide {
-        top: 50%; width: calc(100% - 40px); left: 20px; max-width: 100%;
+        top: 48%; width: calc(100% - 32px); left: 16px; max-width: 100%;
       }
-      .desc-row { flex-direction: column; gap: 12px; }
-      .contact-grid { grid-template-columns: 1fr; }
+      .slide-title { margin-bottom: 14px; }
+      .desc-row { flex-direction: column; gap: 10px; }
+      .slide-desc { font-size: 0.92rem; line-height: 1.5; }
+      
+      .product-item { padding: 14px 16px; }
+      .product-title { font-size: 0.98rem; }
+      .product-body { font-size: 0.82rem; }
+      
+      .contact-grid { grid-template-columns: 1fr; gap: 10px; }
+      .contact-card { padding: 14px 16px; }
 
       .terminal-modal {
         width: calc(100vw - 32px); right: 16px; bottom: 75px; height: 280px;
@@ -280,7 +304,7 @@
     </div>
   </div>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Nav Drawer -->
   <div class="mobile-nav-drawer" id="mobileDrawer">
     <button class="mobile-close-btn" id="mobileCloseBtn">✕</button>
     <a href="#slide-1" class="mobile-link">01. About</a>
@@ -289,7 +313,7 @@
     <a href="#slide-4" class="mobile-link">04. Contact</a>
   </div>
 
-  <!-- Main Slide Overlays -->
+  <!-- Main Slide Overlay Cards -->
   <div class="cinematic-container">
     <div class="slide active" id="slide-1">
       <div class="eyebrow-tag">// Founder & CEO — PT FIHLA INOVASI UTAMA</div>
@@ -301,16 +325,24 @@
     </div>
 
     <div class="slide" id="slide-2">
-      <div class="eyebrow-tag">// Flagship Sovereign Infrastructure</div>
+      <div class="eyebrow-tag">// Flagship Infrastructure</div>
       <h2 class="slide-title" data-original="Sovereign Products">Sovereign Products</h2>
-      <div class="slide-desc">
+      <div class="product-list">
         <div class="product-item">
-          <strong style="color:#0284c7;">FSI (Fihla Sovereign Infrastructure)</strong><br>
-          Zero-knowledge cryptographic asset protocol using SHA-256 time-locks & hardware binding. <em>(fsi.fihla.id)</em>
+          <div class="product-header">
+            <span class="product-title">FSI (Fihla Sovereign Infrastructure)</span>
+            <span class="product-tag">PROTOCOL</span>
+          </div>
+          <div class="product-body">Zero-knowledge cryptographic asset protocol using SHA-256 time-locks & hardware binding.</div>
+          <div class="product-link">fsi.fihla.id →</div>
         </div>
         <div class="product-item">
-          <strong style="color:#0284c7;">Tepatin</strong><br>
-          Digital appointment commitment protocol with automated deposit escrow & penalty enforcement. <em>(tepatin.my.id)</em>
+          <div class="product-header">
+            <span class="product-title">Tepatin</span>
+            <span class="product-tag">SERVICE</span>
+          </div>
+          <div class="product-body">Digital appointment commitment protocol with automated deposit escrow & penalty enforcement.</div>
+          <div class="product-link">tepatin.my.id →</div>
         </div>
       </div>
     </div>
@@ -318,21 +350,65 @@
     <div class="slide" id="slide-3">
       <div class="eyebrow-tag">// Ventures & Ecosystem</div>
       <h2 class="slide-title" data-original="Digital Ecosystem">Digital Ecosystem</h2>
-      <div class="slide-desc">
-        <div class="product-item"><strong>Wargakas</strong> — Financial portal software for organizations <em>(saad.fihla.id)</em>.</div>
-        <div class="product-item"><strong>Pasarpixel & Studio</strong> — Digital product marketplace <em>(store.fihla.id)</em> & agency studio <em>(studio.fihla.id)</em>.</div>
-        <div class="product-item"><strong>Fihla Legal Clinic</strong> — Non-litigation legal mediation platform for estate & property division.</div>
+      <div class="product-list">
+        <div class="product-item">
+          <div class="product-header">
+            <span class="product-title">Wargakas</span>
+            <span class="product-tag">FINANCE</span>
+          </div>
+          <div class="product-body">Financial portal software for organizational cash flow & transparency.</div>
+          <div class="product-link">saad.fihla.id →</div>
+        </div>
+        <div class="product-item">
+          <div class="product-header">
+            <span class="product-title">Pasarpixel & Studio</span>
+            <span class="product-tag">MARKET</span>
+          </div>
+          <div class="product-body">Digital product marketplace and agency web studio.</div>
+          <div class="product-link">store.fihla.id • studio.fihla.id →</div>
+        </div>
+        <div class="product-item">
+          <div class="product-header">
+            <span class="product-title">Fihla Legal Clinic</span>
+            <span class="product-tag">LEGAL</span>
+          </div>
+          <div class="product-body">Non-litigation legal mediation platform for estate & property division in Lombok Timur.</div>
+        </div>
       </div>
     </div>
 
     <div class="slide" id="slide-4">
       <div class="eyebrow-tag">// Direct Connections</div>
       <h2 class="slide-title" data-original="Get in Touch">Get in Touch</h2>
-      <div class="slide-desc contact-grid">
-        <a href="https://wa.me/6285338561880" target="_blank" class="contact-card"><span>WhatsApp</span><strong>+62 853-3856-1880</strong></a>
-        <a href="mailto:lalufarih46@gmail.com" class="contact-card"><span>Email</span><strong>lalufarih46@gmail.com</strong></a>
-        <a href="https://t.me/imfaarih" target="_blank" class="contact-card"><span>Telegram</span><strong>@imfaarih</strong></a>
-        <a href="https://www.instagram.com/imfaarih" target="_blank" class="contact-card"><span>Instagram</span><strong>@imfaarih</strong></a>
+      <div class="contact-grid">
+        <a href="https://wa.me/6285338561880" target="_blank" class="contact-card">
+          <div class="contact-info">
+            <span>WhatsApp</span>
+            <strong>+62 853-3856-1880</strong>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="mailto:lalufarih46@gmail.com" class="contact-card">
+          <div class="contact-info">
+            <span>Email</span>
+            <strong>lalufarih46@gmail.com</strong>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://t.me/imfaarih" target="_blank" class="contact-card">
+          <div class="contact-info">
+            <span>Telegram</span>
+            <strong>@imfaarih</strong>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/imfaarih" target="_blank" class="contact-card">
+          <div class="contact-info">
+            <span>Instagram</span>
+            <strong>@imfaarih</strong>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
       </div>
     </div>
   </div>
@@ -355,11 +431,11 @@
     </div>
   </div>
 
-  <!-- Three.js Module & Interactive Engine -->
+  <!-- Three.js Module & Script -->
   <script type="module">
     import * as THREE from 'three';
 
-    // --- Scene & Camera Setup ---
+    // Scene & Camera
     const canvas = document.getElementById('webgl');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8f9fb');
@@ -373,11 +449,11 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // --- Cybernetic Solar System ---
+    // Cybernetic Solar System Group
     const cyberSystemGroup = new THREE.Group();
     scene.add(cyberSystemGroup);
 
-    // 1. Cyber Core (Sun)
+    // 1. Cyber Core
     const sunGeo = new THREE.IcosahedronGeometry(0.8, 2);
     const sunMat = new THREE.MeshBasicMaterial({ color: '#0284c7', wireframe: true });
     const cyberSun = new THREE.Mesh(sunGeo, sunMat);
@@ -445,7 +521,7 @@
     const galaxyParticles = new THREE.Points(pGeo, pMat);
     cyberSystemGroup.add(galaxyParticles);
 
-    // --- Interactive Mouse & Cursor ---
+    // Interactive Mouse & Custom Cursor
     let mouseX = 0, mouseY = 0;
     const cursorInner = document.getElementById('cursorInner');
     const cursorOuter = document.getElementById('cursorOuter');
@@ -462,7 +538,7 @@
       }
     });
 
-    // --- Scroll Driven Animation ---
+    // Scroll Logic
     let currentScroll = 0;
     window.addEventListener('scroll', () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -512,7 +588,7 @@
       }, 30);
     }
 
-    // Render Loop
+    // Render Animation
     function animate() {
       requestAnimationFrame(animate);
 
@@ -546,7 +622,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Mobile Drawer Interactions
+    // Mobile Drawer Handlers
     const mobileToggleBtn = document.getElementById('mobileToggleBtn');
     const mobileCloseBtn = document.getElementById('mobileCloseBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
@@ -561,7 +637,7 @@
       link.addEventListener('click', () => mobileDrawer.classList.remove('active'));
     });
 
-    // Terminal Interactions
+    // Terminal Commands Handlers
     const termToggle = document.getElementById('termToggle');
     const termModal = document.getElementById('termModal');
     const termInput = document.getElementById('termInput');
