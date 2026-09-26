@@ -39,31 +39,21 @@
       pointer-events: none;
     }
 
-    /* Custom Cursor Fixes */
+    /* Custom Cursor Elements */
     .cursor-inner {
-      position: fixed;
-      top: 0; left: 0;
-      width: 10px; height: 10px;
-      background-color: #0284c7;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s ease-out;
+      position: fixed; top: 0; left: 0; width: 8px; height: 8px;
+      background-color: #0284c7; border-radius: 50%;
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%); transition: transform 0.05s ease-out;
     }
     .cursor-outer {
-      position: fixed;
-      top: 0; left: 0;
-      width: 38px; height: 38px;
-      border: 1.5px solid rgba(2, 132, 199, 0.6);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 99998;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, border-color 0.2s;
+      position: fixed; top: 0; left: 0; width: 36px; height: 36px;
+      border: 1.5px solid rgba(2, 132, 199, 0.5); border-radius: 50%;
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%, -50%); transition: width 0.2s, height 0.2s, border-color 0.2s;
     }
 
-    /* Grid Lines & Story Dashes */
+    /* Grid Lines & Story Progress */
     .grid-lines {
       position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
       z-index: 2; pointer-events: none; display: flex; justify-content: space-between;
@@ -81,8 +71,8 @@
       position: absolute; width: 5px; height: 5px; background: rgba(2, 132, 199, 0.4);
       border-radius: 50%; left: -2px;
     }
-    .grid-dot.top { top: 120px; }
-    .grid-dot.bottom { bottom: 60px; }
+    .grid-dot.top { top: 100px; }
+    .grid-dot.bottom { bottom: 40px; }
 
     .story-progress-container {
       display: flex; flex-direction: column; justify-content: center; height: 100%;
@@ -91,19 +81,18 @@
     .story-dash { width: 3px; height: 32px; background: rgba(0, 0, 0, 0.08); border-radius: 2px; overflow: hidden; }
     .story-dash-fill { width: 100%; height: 0%; background: #0284c7; transition: height 0.1s linear; }
 
-    /* Layout & Container */
+    /* Main Container Shell */
     .cinematic-container {
       position: relative; z-index: 10; width: 100%; max-width: 1400px;
-      margin: 0 auto; padding: 0 40px 40px 40px;
-      pointer-events: none;
+      margin: 0 auto; padding: 0 40px 40px 40px; pointer-events: none;
     }
 
-    /* Header Navigation */
+    /* Header & Navigation */
     .main-header {
       position: fixed; top: 0; left: 0; width: 100%;
-      padding: 24px 40px; display: flex; justify-content: space-between; align-items: center;
-      z-index: 100; backdrop-filter: blur(8px); background: rgba(248, 249, 251, 0.7);
-      border-bottom: 1px solid rgba(2, 132, 199, 0.08);
+      padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background: rgba(248, 249, 251, 0.75); border-bottom: 1px solid rgba(2, 132, 199, 0.08);
       pointer-events: auto;
     }
     .brand { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; }
@@ -112,115 +101,126 @@
     .nav-link:hover { color: #0284c7; }
     .nav-dot { width: 4px; height: 4px; background: #cbd5e1; border-radius: 50%; }
 
-    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .header-actions { display: flex; align-items: center; gap: 12px; }
     .contact-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 10px 20px; background: #111418; color: #fff; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 18px; background: #111418; color: #fff; text-decoration: none;
       border-radius: 100px; font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease;
     }
     .contact-btn:hover { background: #0284c7; }
     .btn-circle { width: 6px; height: 6px; background: #38bdf8; border-radius: 50%; }
 
-    .mobile-toggle { display: none; }
+    .mobile-toggle {
+      display: none; background: transparent; border: none; cursor: pointer; padding: 8px;
+    }
+    .mobile-toggle span {
+      width: 20px; height: 2px; background: #111418; display: block; margin: 4px 0;
+      transition: transform 0.2s, opacity 0.2s;
+    }
 
     /* Mobile Drawer */
     .mobile-nav-drawer {
-      position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-      background: rgba(248, 249, 251, 0.96); backdrop-filter: blur(20px);
-      z-index: 99; display: flex; flex-direction: column; justify-content: center;
-      padding: 40px; gap: 24px; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      border-left: 1px solid rgba(2, 132, 199, 0.15);
+      position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+      background: rgba(248, 249, 251, 0.98); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 40px; gap: 28px; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: auto;
     }
     .mobile-nav-drawer.active { right: 0; }
-    .mobile-link { font-size: 1.5rem; font-weight: 600; color: #111418; text-decoration: none; }
-
-    /* Slides Content */
-    .slide {
-      position: fixed; top: 50%; transform: translateY(-50%);
-      width: 100%; max-width: 680px; opacity: 0; pointer-events: none;
-      transition: opacity 0.6s ease, transform 0.6s ease;
+    .mobile-link { font-size: 1.8rem; font-weight: 600; color: #111418; text-decoration: none; }
+    .mobile-close-btn {
+      position: absolute; top: 24px; right: 24px; background: rgba(2, 132, 199, 0.1);
+      border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
-    .slide.active { opacity: 1; pointer-events: auto; transform: translateY(-50%) translateY(0); }
+
+    /* Slide Cards */
+    .slide {
+      position: fixed; top: 52%; transform: translateY(-50%);
+      width: 100%; max-width: 680px; opacity: 0; pointer-events: none;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .slide.active { opacity: 1; pointer-events: auto; transform: translateY(-50%); }
 
     .eyebrow-tag {
       font-family: 'Fira Code', monospace; font-size: 0.78rem; text-transform: uppercase;
-      letter-spacing: 0.12em; color: #0284c7; margin-bottom: 16px; font-weight: 600;
+      letter-spacing: 0.1em; color: #0284c7; margin-bottom: 12px; font-weight: 600;
     }
     .slide-title {
-      font-family: 'Instrument Serif', serif; font-size: clamp(3.2rem, 7vw, 6.2rem);
-      line-height: 0.95; color: #111418; margin-bottom: 24px; font-weight: 400;
+      font-family: 'Instrument Serif', serif; font-size: clamp(2.4rem, 8vw, 5.5rem);
+      line-height: 1.02; color: #111418; margin-bottom: 20px; font-weight: 400;
     }
-    .desc-row { display: flex; gap: 24px; }
-    .slide-desc { font-size: 1.05rem; line-height: 1.6; color: #475569; font-weight: 400; }
+    .desc-row { display: flex; gap: 20px; }
+    .slide-desc { font-size: 1rem; line-height: 1.6; color: #475569; font-weight: 400; }
 
-    /* Glassmorphism Product & Contact Cards */
+    /* Glassmorphic Product & Contact Cards */
     .product-item {
-      padding: 20px; margin-bottom: 16px; border-radius: 16px;
-      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px);
-      border: 1px solid rgba(2, 132, 199, 0.15);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02); transition: transform 0.2s, border-color 0.2s;
+      padding: 16px 20px; margin-bottom: 12px; border-radius: 14px;
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
     }
-    .product-item:hover { transform: translateY(-2px); border-color: rgba(2, 132, 199, 0.4); }
-
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
     .contact-card {
-      display: flex; flex-direction: column; gap: 6px; padding: 20px;
-      background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(16px);
-      border: 1px solid rgba(2, 132, 199, 0.15); border-radius: 16px;
-      text-decoration: none; color: #111418; transition: all 0.2s ease;
+      display: flex; flex-direction: column; gap: 4px; padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(2, 132, 199, 0.15); border-radius: 14px; text-decoration: none; color: #111418;
     }
-    .contact-card:hover { border-color: #0284c7; background: rgba(255, 255, 255, 0.95); }
-    .contact-card span { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-    .contact-card strong { font-size: 0.95rem; font-weight: 600; word-break: break-all; }
+    .contact-card span { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-card strong { font-size: 0.9rem; font-weight: 600; word-break: break-all; }
 
-    /* Cyber Terminal Floating Toggle & Modal Fixes */
+    /* Terminal CLI Component */
     .terminal-toggle {
-      position: fixed; bottom: 30px; right: 40px; z-index: 10000;
+      position: fixed; bottom: 28px; right: 40px; z-index: 10000;
       background: #111418; color: #10b981; font-family: 'Fira Code', monospace;
-      padding: 12px 22px; border-radius: 100px; border: 1px solid rgba(16, 185, 129, 0.4);
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      transition: all 0.2s; pointer-events: auto;
+      padding: 10px 18px; border-radius: 100px; border: 1px solid rgba(16, 185, 129, 0.4);
+      font-size: 0.8rem; font-weight: 600; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      pointer-events: auto;
     }
-    .terminal-toggle:hover { background: #0284c7; color: #fff; border-color: #38bdf8; transform: translateY(-2px); }
+    .terminal-toggle:hover { background: #0284c7; color: #fff; border-color: #38bdf8; }
 
     .terminal-modal {
-      position: fixed; bottom: 90px; right: 40px; width: 420px; height: 320px;
-      background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(20px);
+      position: fixed; bottom: 85px; right: 40px; width: 400px; height: 300px;
+      background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px;
       z-index: 10000; display: none; flex-direction: column; overflow: hidden;
       box-shadow: 0 20px 50px rgba(0,0,0,0.25); pointer-events: auto;
     }
     .terminal-modal.active { display: flex; }
     .terminal-header {
-      background: rgba(255,255,255,0.05); padding: 10px 16px;
+      background: rgba(255,255,255,0.05); padding: 10px 14px;
       display: flex; justify-content: space-between; align-items: center;
-      font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #94a3b8;
+      font-family: 'Fira Code', monospace; font-size: 0.72rem; color: #94a3b8;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .terminal-body {
-      flex: 1; padding: 16px; font-family: 'Fira Code', monospace; font-size: 0.8rem;
+      flex: 1; padding: 14px; font-family: 'Fira Code', monospace; font-size: 0.78rem;
       color: #38bdf8; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;
     }
     .terminal-input-row { display: flex; gap: 8px; align-items: center; }
     .terminal-input {
       background: transparent; border: none; outline: none; color: #f8fafc;
-      font-family: 'Fira Code', monospace; font-size: 0.8rem; width: 100%;
+      font-family: 'Fira Code', monospace; font-size: 0.78rem; width: 100%;
     }
 
-    /* Mobile Adaptations */
+    /* Mobile Layout Adaptations */
     @media (max-width: 768px) {
-      .cinematic-container { padding: 0 24px 24px 24px; }
+      .main-header { padding: 16px 20px; }
+      .grid-lines { padding: 0 16px; }
+      .cinematic-container { padding: 0 20px; }
+      
       .header-nav { display: none; }
-      .mobile-toggle {
-        display: flex; flex-direction: column; gap: 5px;
-        background: transparent; border: none; cursor: pointer;
+      .mobile-toggle { display: block; }
+      
+      .slide {
+        top: 50%; width: calc(100% - 40px); left: 20px; max-width: 100%;
       }
-      .mobile-toggle span { width: 22px; height: 2px; background: #111418; display: block; }
-      .desc-row { flex-direction: column; gap: 16px; }
+      .desc-row { flex-direction: column; gap: 12px; }
       .contact-grid { grid-template-columns: 1fr; }
-      .terminal-modal { width: calc(100vw - 48px); right: 24px; }
-      .terminal-toggle { right: 24px; bottom: 24px; }
+
+      .terminal-modal {
+        width: calc(100vw - 32px); right: 16px; bottom: 75px; height: 280px;
+      }
+      .terminal-toggle { right: 16px; bottom: 20px; padding: 8px 14px; font-size: 0.75rem; }
     }
   </style>
 
@@ -237,11 +237,11 @@
 
   <canvas id="webgl"></canvas>
 
-  <!-- Custom Cursor Elements -->
+  <!-- Custom Cursor -->
   <div class="cursor-inner" id="cursorInner"></div>
   <div class="cursor-outer" id="cursorOuter"></div>
 
-  <!-- Overlay Grids -->
+  <!-- Overlay Grids & Progress Bars -->
   <div class="grid-horizontal-line"></div>
   <div class="grid-lines">
     <div class="grid-line"><div class="grid-dot top"></div><div class="grid-dot bottom"></div></div>
@@ -274,19 +274,22 @@
     </nav>
     <div class="header-actions">
       <a href="https://wa.me/6285338561880" target="_blank" class="contact-btn">Contact <span class="btn-circle"></span></a>
-      <button class="mobile-toggle" aria-label="Toggle Navigation"><span></span><span></span></button>
+      <button class="mobile-toggle" id="mobileToggleBtn" aria-label="Toggle Navigation">
+        <span></span><span></span>
+      </button>
     </div>
   </div>
 
-  <!-- Mobile Nav Drawer -->
+  <!-- Mobile Drawer -->
   <div class="mobile-nav-drawer" id="mobileDrawer">
+    <button class="mobile-close-btn" id="mobileCloseBtn">✕</button>
     <a href="#slide-1" class="mobile-link">01. About</a>
     <a href="#slide-2" class="mobile-link">02. Products</a>
     <a href="#slide-3" class="mobile-link">03. Ecosystem</a>
     <a href="#slide-4" class="mobile-link">04. Contact</a>
   </div>
 
-  <!-- Slides Content -->
+  <!-- Main Slide Overlays -->
   <div class="cinematic-container">
     <div class="slide active" id="slide-1">
       <div class="eyebrow-tag">// Founder & CEO — PT FIHLA INOVASI UTAMA</div>
@@ -344,7 +347,7 @@
     <div class="terminal-body" id="termBody">
       <div>Type <span style="color:#f59e0b;">'help'</span> for available commands.</div>
     </div>
-    <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08);">
+    <div style="padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.08);">
       <div class="terminal-input-row">
         <span style="color:#10b981;">&gt;</span>
         <input type="text" class="terminal-input" id="termInput" placeholder="Enter command..." autocomplete="off">
@@ -352,25 +355,25 @@
     </div>
   </div>
 
-  <!-- Three.js Module & Interactive Logic -->
+  <!-- Three.js Module & Interactive Engine -->
   <script type="module">
     import * as THREE from 'three';
 
-    // --- Scene Setup ---
+    // --- Scene & Camera Setup ---
     const canvas = document.getElementById('webgl');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8f9fb');
     scene.fog = new THREE.FogExp2('#f8f9fb', 0.012);
 
     const isMobile = window.innerWidth <= 768;
-    const camera = new THREE.PerspectiveCamera(isMobile ? 65 : 50, window.innerWidth / window.innerHeight, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(isMobile ? 70 : 50, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0.5, isMobile ? 6.5 : 5.0);
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // --- Cybernetic Solar System Group ---
+    // --- Cybernetic Solar System ---
     const cyberSystemGroup = new THREE.Group();
     scene.add(cyberSystemGroup);
 
@@ -392,14 +395,12 @@
     const planetColors = ['#0284c7', '#10b981', '#0284c7'];
 
     orbitRadii.forEach((radius, i) => {
-      // Orbit Path
       const orbitGeo = new THREE.RingGeometry(radius - 0.01, radius + 0.01, 64);
       const orbitMat = new THREE.MeshBasicMaterial({ color: '#0284c7', side: THREE.DoubleSide, transparent: true, opacity: 0.15 });
       const orbitMesh = new THREE.Mesh(orbitGeo, orbitMat);
       orbitMesh.rotation.x = Math.PI / 2;
       cyberSystemGroup.add(orbitMesh);
 
-      // Planet Mesh
       const pGeo = new THREE.IcosahedronGeometry(0.2 + i * 0.05, 1);
       const pMat = new THREE.MeshBasicMaterial({ color: planetColors[i], wireframe: true });
       const planetMesh = new THREE.Mesh(pGeo, pMat);
@@ -412,7 +413,7 @@
       planets.push({ pivot: pPivot, mesh: planetMesh, speed: orbitSpeeds[i] });
     });
 
-    // 3. Matrix Galaxy Particles
+    // 3. Matrix Particles
     const particleCount = 1200;
     const pGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
@@ -444,7 +445,7 @@
     const galaxyParticles = new THREE.Points(pGeo, pMat);
     cyberSystemGroup.add(galaxyParticles);
 
-    // --- Interactive Mouse & Custom Cursor Tracking ---
+    // --- Interactive Mouse & Cursor ---
     let mouseX = 0, mouseY = 0;
     const cursorInner = document.getElementById('cursorInner');
     const cursorOuter = document.getElementById('cursorOuter');
@@ -461,12 +462,12 @@
       }
     });
 
+    // --- Scroll Driven Animation ---
     let currentScroll = 0;
     window.addEventListener('scroll', () => {
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       currentScroll = window.scrollY / (maxScroll || 1);
 
-      // Active Slide Switcher
       const slideIndex = Math.min(3, Math.floor(currentScroll * 4));
       document.querySelectorAll('.slide').forEach((slide, i) => {
         if (i === slideIndex) {
@@ -479,7 +480,6 @@
         }
       });
 
-      // Progress Dashes
       for (let i = 1; i <= 4; i++) {
         const fill = document.getElementById(`dash-fill-${i}`);
         if (fill) {
@@ -492,7 +492,7 @@
       }
     });
 
-    // Scramble Text Glitch Function
+    // Scramble Text Glitch
     function triggerGlitch(element) {
       if (!element) return;
       const originalText = element.getAttribute('data-original');
@@ -512,26 +512,20 @@
       }, 30);
     }
 
-    // --- Animation Loop ---
-    const clock = new THREE.Clock();
-
+    // Render Loop
     function animate() {
       requestAnimationFrame(animate);
 
-      // Rotate Core
       cyberSun.rotation.y += 0.005;
       cyberSun.rotation.x += 0.002;
 
-      // Orbit Planets
       planets.forEach(p => {
         p.pivot.rotation.y += p.speed;
         p.mesh.rotation.y += 0.02;
       });
 
-      // Galaxy Particles Slow Drift
       galaxyParticles.rotation.y += 0.0008;
 
-      // Scroll Camera Flight
       const orbitAngle = currentScroll * Math.PI * 2;
       const radius = isMobile ? 6.5 : 5.0;
       camera.position.x = Math.sin(orbitAngle) * radius + (mouseX * 0.5);
@@ -543,23 +537,31 @@
     }
     animate();
 
-    // Resize Handler
+    // Resize Event
     window.addEventListener('resize', () => {
+      const mobileCheck = window.innerWidth <= 768;
+      camera.fov = mobileCheck ? 70 : 50;
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    // Mobile Drawer Navigation
-    const mobileToggle = document.querySelector('.mobile-toggle');
+    // Mobile Drawer Interactions
+    const mobileToggleBtn = document.getElementById('mobileToggleBtn');
+    const mobileCloseBtn = document.getElementById('mobileCloseBtn');
     const mobileDrawer = document.getElementById('mobileDrawer');
-    if (mobileToggle && mobileDrawer) {
-      mobileToggle.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('active');
-      });
-    }
 
-    // Terminal Logic
+    if (mobileToggleBtn && mobileDrawer) {
+      mobileToggleBtn.addEventListener('click', () => mobileDrawer.classList.add('active'));
+    }
+    if (mobileCloseBtn && mobileDrawer) {
+      mobileCloseBtn.addEventListener('click', () => mobileDrawer.classList.remove('active'));
+    }
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileDrawer.classList.remove('active'));
+    });
+
+    // Terminal Interactions
     const termToggle = document.getElementById('termToggle');
     const termModal = document.getElementById('termModal');
     const termInput = document.getElementById('termInput');
