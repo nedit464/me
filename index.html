@@ -8,7 +8,7 @@
   <!-- Google Fonts import -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -87,23 +87,23 @@
     .cursor-hover .cursor-inner {
       width: 12px;
       height: 12px;
-      background-color: #2563eb;
+      background-color: #10b981;
     }
 
     .cursor-hover .cursor-outer {
       width: 52px;
       height: 52px;
-      border-color: rgba(37, 99, 235, 0.6);
+      border-color: rgba(16, 185, 129, 0.6);
     }
 
-    /* Visual Grid Overlay */
+    /* Visual Cyber Grid Overlay */
     .grid-horizontal-line {
       position: fixed;
       top: 50%;
       left: 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.08) 15%, rgba(14, 165, 233, 0.08) 85%, transparent);
+      background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.12) 15%, rgba(16, 185, 129, 0.12) 85%, transparent);
       z-index: 2;
       pointer-events: none;
     }
@@ -125,16 +125,17 @@
       position: relative;
       width: 1px;
       height: 100%;
-      background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.06) 10%, rgba(14, 165, 233, 0.06) 90%, transparent);
+      background: linear-gradient(180deg, transparent, rgba(14, 165, 233, 0.08) 10%, rgba(16, 185, 129, 0.08) 90%, transparent);
     }
 
     .grid-dot {
       position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(14, 165, 233, 0.35);
+      width: 5px;
+      height: 5px;
+      background: #0284c7;
       border-radius: 50%;
-      left: -1.5px;
+      left: -2px;
+      box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
     }
 
     .grid-dot.top { top: 12vh; }
@@ -168,7 +169,7 @@
     .story-dash-fill {
       width: 100%;
       height: 0%;
-      background: #0284c7;
+      background: linear-gradient(180deg, #0284c7, #10b981);
       border-radius: 2px;
       transition: height 0.1s linear;
     }
@@ -205,19 +206,32 @@
       letter-spacing: -0.02em;
       color: #111418;
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      background: rgba(2, 132, 199, 0.1);
+      color: #0284c7;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(2, 132, 199, 0.2);
     }
 
     .header-nav {
       display: flex;
       align-items: center;
       gap: 20px;
-      background: rgba(255, 255, 255, 0.82);
+      background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 10px 24px;
       border-radius: 30px;
-      border: 1px solid rgba(14, 165, 233, 0.12);
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.05);
+      border: 1px solid rgba(14, 165, 233, 0.15);
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
     }
 
     .nav-link {
@@ -257,7 +271,7 @@
       font-weight: 500;
       text-decoration: none;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.15);
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.18);
     }
 
     .contact-btn:hover {
@@ -268,8 +282,9 @@
     .btn-circle {
       width: 6px;
       height: 6px;
-      background: #38bdf8;
+      background: #10b981;
       border-radius: 50%;
+      box-shadow: 0 0 6px #10b981;
     }
 
     .mobile-toggle {
@@ -350,13 +365,20 @@
     }
 
     .eyebrow-tag {
-      font-size: 0.78rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.76rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       font-weight: 600;
       color: #0284c7;
       margin-bottom: 12px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(2, 132, 199, 0.08);
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(2, 132, 199, 0.18);
     }
 
     .slide-title {
@@ -403,7 +425,7 @@
       height: 220px;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.18);
       border: 1px solid rgba(255, 255, 255, 0.8);
       opacity: 0;
       visibility: hidden;
@@ -427,7 +449,7 @@
     .product-item {
       margin-bottom: 16px;
       padding-bottom: 16px;
-      border-bottom: 1px solid rgba(14, 165, 233, 0.12);
+      border-bottom: 1px solid rgba(14, 165, 233, 0.15);
     }
 
     .product-item:last-child {
@@ -468,8 +490,8 @@
       display: flex;
       flex-direction: column;
       padding: 20px 24px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(14, 165, 233, 0.12);
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(14, 165, 233, 0.15);
       border-radius: 16px;
       text-decoration: none;
       transition: all 0.3s ease;
@@ -479,12 +501,13 @@
     .contact-card:hover {
       transform: translateY(-3px);
       background: #ffffff;
-      border-color: rgba(2, 132, 199, 0.4);
-      box-shadow: 0 12px 30px rgba(14, 165, 233, 0.12);
+      border-color: rgba(16, 185, 129, 0.5);
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.15);
     }
 
     .contact-card span {
-      font-size: 0.75rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: #64748b;
@@ -576,7 +599,7 @@
   <!-- Header Overlay -->
   <div class="cinematic-container">
     <div class="main-header">
-      <a href="#slide-1" class="brand">Faarih<span style="color: #0284c7;">.</span></a>
+      <a href="#slide-1" class="brand">Faarih<span style="color: #0284c7;">.</span> <span class="brand-tag">SYS//01</span></a>
       <nav class="header-nav">
         <a href="#slide-1" class="nav-link">About</a>
         <span class="nav-dot"></span>
@@ -604,7 +627,7 @@
 
     <!-- Slide 1: Profile & Intro -->
     <div class="slide active" id="slide-1">
-      <div class="eyebrow-tag">Founder & CEO — PT FIHLA INOVASI UTAMA</div>
+      <div class="eyebrow-tag">&gt;_ FOUNDER &amp; CEO — PT FIHLA INOVASI UTAMA</div>
       <h1 class="slide-title">Lalu Muhammad <br>Faarih As'ad</h1>
       <div class="desc-row">
         <p class="slide-desc col-1">Building practical digital infrastructure, sovereign protocols, and commercial software for local businesses and creators in Indonesia.</p>
@@ -617,7 +640,7 @@
       <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop" alt="Fihla Infrastructure Ecosystem" onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Fihla+Architecture'">
     </div>
     <div class="slide" id="slide-2">
-      <div class="eyebrow-tag">Flagship Infrastructure</div>
+      <div class="eyebrow-tag">[CORE_SYSTEMS] Flagship Infrastructure</div>
       <h2 class="slide-title">Sovereign <br>Products</h2>
       <div class="slide-desc">
         <div class="product-item">
@@ -633,7 +656,7 @@
 
     <!-- Slide 3: Complete Ventures & Ecosystem -->
     <div class="slide" id="slide-3">
-      <div class="eyebrow-tag">Ventures & Ecosystem</div>
+      <div class="eyebrow-tag">[NODE_NETWORK] Ventures &amp; Ecosystem</div>
       <h2 class="slide-title">Digital <br>Ecosystem</h2>
       <div class="slide-desc">
         <div class="product-item">
@@ -650,7 +673,7 @@
 
     <!-- Slide 4: Full Contact Details -->
     <div class="slide" id="slide-4">
-      <div class="eyebrow-tag">Direct Connections</div>
+      <div class="eyebrow-tag">// DIRECT_COMMUNICATION</div>
       <h2 class="slide-title">Get in <br>Touch</h2>
       <div class="slide-desc contact-grid">
         <a href="https://wa.me/6285338561880" target="_blank" class="contact-card">
@@ -678,7 +701,7 @@
   <script type="module">
     import * as THREE from 'three';
 
-    // Cursor Interactions
+    // Custom Cursor
     const cursorInner = document.querySelector('.cursor-inner');
     const cursorOuter = document.querySelector('.cursor-outer');
 
@@ -714,10 +737,11 @@
       });
     });
 
+    // WebGL Canvas & Scene Setup
     const canvas = document.getElementById('webgl');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color('#f8f9fb');
-    scene.fog = new THREE.FogExp2('#f8f9fb', 0.006);
+    scene.fog = new THREE.FogExp2('#f8f9fb', 0.005);
 
     const isMobile = window.innerWidth <= 768;
     const camera = new THREE.PerspectiveCamera(isMobile ? 65 : 50, window.innerWidth / window.innerHeight, 0.1, 100);
@@ -728,22 +752,23 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // High-Intensity Studio Lighting
-    const ambientLight = new THREE.AmbientLight('#ffffff', 1.8);
+    // Studio Lighting for High-Tech Holographic Feel
+    const ambientLight = new THREE.AmbientLight('#ffffff', 1.6);
     scene.add(ambientLight);
 
-    const sunCoreLight = new THREE.PointLight('#38bdf8', 35.0, 20);
-    sunCoreLight.position.set(0, 0, 0);
-    scene.add(sunCoreLight);
+    const cyberCoreLight = new THREE.PointLight('#0284c7', 40.0, 25);
+    cyberCoreLight.position.set(0, 0, 0);
+    scene.add(cyberCoreLight);
 
-    const cyanRimLight = new THREE.DirectionalLight('#0284c7', 6.0);
+    const matrixEmeraldLight = new THREE.PointLight('#10b981', 25.0, 20);
+    matrixEmeraldLight.position.set(2, 3, 2);
+    scene.add(matrixEmeraldLight);
+
+    const cyanRimLight = new THREE.DirectionalLight('#38bdf8', 6.0);
     cyanRimLight.position.set(-5, 6, -3);
     scene.add(cyanRimLight);
 
-    const fillWarmLight = new THREE.DirectionalLight('#818cf8', 4.0);
-    fillWarmLight.position.set(4, -3, 3);
-    scene.add(fillWarmLight);
-
+    // Background Wave Shader
     const waveUniforms = {
       uTime: { value: 0 },
       uScrollProgress: { value: 0 }
@@ -765,13 +790,13 @@
 
         void main() {
           vec2 uv = vUv;
-          float wave = sin(uv.x * 4.0 + uTime * 0.6) * cos(uv.y * 4.0 + uTime * 0.4) * 0.05;
+          float wave = sin(uv.x * 6.0 + uTime * 0.5) * cos(uv.y * 6.0 + uTime * 0.4) * 0.04;
           
-          vec3 topColor = mix(vec3(0.96, 0.98, 1.0), vec3(0.90, 0.94, 0.99), uScrollProgress);
-          vec3 bottomColor = mix(vec3(0.98, 0.99, 1.0), vec3(0.86, 0.93, 0.98), uScrollProgress);
+          vec3 topColor = mix(vec3(0.96, 0.98, 1.0), vec3(0.90, 0.96, 0.98), uScrollProgress);
+          vec3 bottomColor = mix(vec3(0.98, 0.99, 1.0), vec3(0.88, 0.95, 0.94), uScrollProgress);
           
           vec3 finalColor = mix(topColor, bottomColor, uv.y + wave);
-          gl_FragColor = vec4(finalColor, 0.6);
+          gl_FragColor = vec4(finalColor, 0.55);
         }
       `,
       transparent: true,
@@ -782,97 +807,146 @@
     scene.add(quad);
 
     const galaxyPivot = new THREE.Group();
-    // Tilt the entire solar system slightly for a dramatic orbital perspective
-    galaxyPivot.rotation.x = 0.35;
+    galaxyPivot.rotation.x = 0.38;
     galaxyPivot.rotation.z = -0.15;
     scene.add(galaxyPivot);
 
-    // 1. Central Sun / Galactic Core
-    const sunGeo = new THREE.SphereGeometry(isMobile ? 0.42 : 0.52, 32, 32);
-    const sunMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color('#38bdf8'),
-      emissive: new THREE.Color('#0284c7'),
-      emissiveIntensity: 1.8,
-      roughness: 0.2,
-      metalness: 0.8
-    });
-    const sunMesh = new THREE.Mesh(sunGeo, sunMat);
-    galaxyPivot.add(sunMesh);
+    // 1. Cyber Core (Geodesic Matrix Sun)
+    const coreGroup = new THREE.Group();
+    galaxyPivot.add(coreGroup);
 
-    // Sun Corona Halo Shell
-    const coronaGeo = new THREE.IcosahedronGeometry(isMobile ? 0.52 : 0.65, 2);
-    const coronaMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color('#7dd3fc'),
+    // Inner glowing sphere
+    const innerCoreGeo = new THREE.IcosahedronGeometry(isMobile ? 0.38 : 0.46, 3);
+    const innerCoreMat = new THREE.MeshStandardMaterial({
+      color: new THREE.Color('#0284c7'),
+      emissive: new THREE.Color('#0284c7'),
+      emissiveIntensity: 1.6,
+      roughness: 0.1,
+      metalness: 0.9,
+      wireframe: false
+    });
+    const innerCoreMesh = new THREE.Mesh(innerCoreGeo, innerCoreMat);
+    coreGroup.add(innerCoreMesh);
+
+    // Outer Geodesic Wireframe Shell
+    const outerGeo = new THREE.IcosahedronGeometry(isMobile ? 0.52 : 0.62, 2);
+    const outerMat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color('#10b981'),
       wireframe: true,
       transparent: true,
-      opacity: 0.35
+      opacity: 0.65
     });
-    const coronaMesh = new THREE.Mesh(coronaGeo, coronaMat);
-    galaxyPivot.add(coronaMesh);
+    const outerCoreMesh = new THREE.Mesh(outerGeo, outerMat);
+    coreGroup.add(outerCoreMesh);
 
-    // 2. Planets Array Setup
+    // Rotating Concentric Holographic HUD Rings
+    const hudRings = [];
+    const ringRadii = [0.7, 0.85, 1.0];
+    const ringColors = ['#0284c7', '#10b981', '#38bdf8'];
+
+    ringRadii.forEach((r, idx) => {
+      const ringGeo = new THREE.RingGeometry(r, r + 0.02, 64);
+      const ringMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(ringColors[idx]),
+        side: THREE.DoubleSide,
+        transparent: true,
+        opacity: 0.45,
+        wireframe: idx % 2 === 0
+      });
+      const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+      ringMesh.rotation.x = Math.PI / 2 + (idx * 0.2);
+      ringMesh.rotation.y = idx * 0.3;
+      coreGroup.add(ringMesh);
+
+      hudRings.push({ mesh: ringMesh, speed: (idx + 1) * 0.008 * (idx % 2 === 0 ? 1 : -1) });
+    });
+
+    // 2. Cybernetic Planetary Orbits
     const planets = [];
     const planetConfigs = [
-      { radius: 0.12, distance: 1.1, color: '#38bdf8', speed: 1.2, rotSpeed: 0.02, emissive: '#0284c7', hasRing: false },
-      { radius: 0.18, distance: 1.7, color: '#0284c7', speed: 0.85, rotSpeed: 0.015, emissive: '#0369a1', hasRing: false, hasMoon: true },
-      { radius: 0.24, distance: 2.4, color: '#0284c7', speed: 0.55, rotSpeed: 0.025, emissive: '#2563eb', hasRing: true, ringInner: 0.32, ringOuter: 0.55 },
-      { radius: 0.15, distance: 3.1, color: '#60a5fa', speed: 0.38, rotSpeed: 0.018, emissive: '#1d4ed8', hasRing: false }
+      { radius: 0.14, distance: 1.2, color: '#38bdf8', wireColor: '#0284c7', speed: 1.1, rotSpeed: 0.02, type: 'wireframe' },
+      { radius: 0.19, distance: 1.8, color: '#10b981', wireColor: '#059669', speed: 0.75, rotSpeed: 0.015, type: 'layered', hasMoon: true },
+      { radius: 0.25, distance: 2.5, color: '#0284c7', wireColor: '#38bdf8', speed: 0.5, rotSpeed: 0.025, type: 'saturn', ringInner: 0.32, ringOuter: 0.58 },
+      { radius: 0.16, distance: 3.2, color: '#6366f1', wireColor: '#818cf8', speed: 0.35, rotSpeed: 0.018, type: 'data' }
     ];
 
+    const planetMeshesForNetwork = [];
+
     planetConfigs.forEach((cfg) => {
-      // Orbital Ring Line
+      // Dashed Vector Orbit Line
       const orbitCurve = new THREE.EllipseCurve(0, 0, cfg.distance, cfg.distance, 0, 2 * Math.PI, false, 0);
-      const points = orbitCurve.getPoints(100);
+      const points = orbitCurve.getPoints(120);
       const orbitGeo = new THREE.BufferGeometry().setFromPoints(points.map(p => new THREE.Vector3(p.x, 0, p.y)));
-      const orbitMat = new THREE.LineBasicMaterial({ color: new THREE.Color('#0284c7'), transparent: true, opacity: 0.2 });
+      const orbitMat = new THREE.LineDashedMaterial({
+        color: new THREE.Color('#0284c7'),
+        transparent: true,
+        opacity: 0.3,
+        dashSize: 0.1,
+        gapSize: 0.05
+      });
       const orbitLine = new THREE.LineLoop(orbitGeo, orbitMat);
+      orbitLine.computeLineDistances();
       galaxyPivot.add(orbitLine);
 
-      // Planet Mesh
-      const pGeo = new THREE.SphereGeometry(cfg.radius, 24, 24);
-      const pMat = new THREE.MeshStandardMaterial({
-        color: new THREE.Color(cfg.color),
-        emissive: new THREE.Color(cfg.emissive),
-        emissiveIntensity: 0.6,
-        roughness: 0.3,
-        metalness: 0.7
-      });
-      const pMesh = new THREE.Mesh(pGeo, pMat);
+      // Cyber Planet Container
+      const planetPivot = new THREE.Group();
 
-      // Planetary Ring (Saturn Style)
-      if (cfg.hasRing) {
-        const ringGeo = new THREE.RingGeometry(cfg.ringInner, cfg.ringOuter, 32);
-        const ringMat = new THREE.MeshStandardMaterial({
-          color: new THREE.Color('#38bdf8'),
-          emissive: new THREE.Color('#0284c7'),
-          emissiveIntensity: 0.8,
+      // Planet Solid Core
+      const pCoreGeo = new THREE.SphereGeometry(cfg.radius * 0.85, 16, 16);
+      const pCoreMat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color(cfg.color),
+        emissive: new THREE.Color(cfg.color),
+        emissiveIntensity: 0.8,
+        roughness: 0.2,
+        metalness: 0.8
+      });
+      const pCoreMesh = new THREE.Mesh(pCoreGeo, pCoreMat);
+      planetPivot.add(pCoreMesh);
+
+      // Planet Low-Poly Cyber Wireframe Outer Shell
+      const pWireGeo = new THREE.IcosahedronGeometry(cfg.radius, 1);
+      const pWireMat = new THREE.MeshBasicMaterial({
+        color: new THREE.Color(cfg.wireColor),
+        wireframe: true,
+        transparent: true,
+        opacity: 0.75
+      });
+      const pWireMesh = new THREE.Mesh(pWireGeo, pWireMat);
+      planetPivot.add(pWireMesh);
+
+      // Saturn Style Digital Data Ring
+      if (cfg.type === 'saturn') {
+        const ringGeo = new THREE.RingGeometry(cfg.ringInner, cfg.ringOuter, 24);
+        const ringMat = new THREE.MeshBasicMaterial({
+          color: new THREE.Color('#10b981'),
           side: THREE.DoubleSide,
           transparent: true,
-          opacity: 0.85,
+          opacity: 0.7,
           wireframe: true
         });
         const ringMesh = new THREE.Mesh(ringGeo, ringMat);
-        ringMesh.rotation.x = Math.PI / 2.5;
-        pMesh.add(ringMesh);
+        ringMesh.rotation.x = Math.PI / 2.3;
+        planetPivot.add(ringMesh);
       }
 
-      // Moon for Planet 2
+      // Cyber Moon
       let moonMesh = null;
       if (cfg.hasMoon) {
-        const mGeo = new THREE.SphereGeometry(0.04, 12, 12);
-        const mMat = new THREE.MeshStandardMaterial({
-          color: new THREE.Color('#93c5fd'),
-          emissive: new THREE.Color('#38bdf8'),
-          emissiveIntensity: 0.5
+        const mGeo = new THREE.IcosahedronGeometry(0.045, 1);
+        const mMat = new THREE.MeshBasicMaterial({
+          color: new THREE.Color('#38bdf8'),
+          wireframe: true
         });
         moonMesh = new THREE.Mesh(mGeo, mMat);
-        pMesh.add(moonMesh);
+        planetPivot.add(moonMesh);
       }
 
-      galaxyPivot.add(pMesh);
+      galaxyPivot.add(planetPivot);
+      planetMeshesForNetwork.push(planetPivot);
 
       planets.push({
-        mesh: pMesh,
+        pivot: planetPivot,
+        wire: pWireMesh,
         moon: moonMesh,
         distance: cfg.distance,
         speed: cfg.speed,
@@ -881,33 +955,55 @@
       });
     });
 
-    // 3. Spiral Galaxy Dust Particles
-    const particleCount = isMobile ? 1200 : 2000;
+    // 3. Digital Constellation HUD Vector Connections (Lines connecting planets like network nodes)
+    const maxLines = 10;
+    const constellationGeo = new THREE.BufferGeometry();
+    const constellationPositions = new Float32Array(maxLines * 6);
+    const constellationMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color('#10b981'),
+      transparent: true,
+      opacity: 0.35
+    });
+    const constellationLines = new THREE.LineSegments(constellationGeo, constellationMat);
+    galaxyPivot.add(constellationLines);
+
+    // 4. Matrix Code Streams & Cyber Particle Spiral Galaxy Arms
+    const particleCount = isMobile ? 1400 : 2500;
     const particleGeo = new THREE.BufferGeometry();
     const particlePos = new Float32Array(particleCount * 3);
     const particleCol = new Float32Array(particleCount * 3);
 
-    const cLightCyan = new THREE.Color('#7dd3fc');
-    const cDeepBlue = new THREE.Color('#0284c7');
+    const cNeonCyan = new THREE.Color('#38bdf8');
+    const cDeepSky = new THREE.Color('#0284c7');
+    const cMatrixEmerald = new THREE.Color('#10b981');
     const cIndigo = new THREE.Color('#6366f1');
 
     const arms = 3;
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
-      const radius = Math.random() * 4.2 + 0.4;
-      const spinAngle = radius * 1.8;
+      const radius = Math.random() * 4.4 + 0.3;
+      const spinAngle = radius * 1.6;
       const branchAngle = ((i % arms) * 2 * Math.PI) / arms;
 
-      const randomX = (Math.random() - 0.5) * 0.4;
-      const randomY = (Math.random() - 0.5) * 0.35;
-      const randomZ = (Math.random() - 0.5) * 0.4;
+      const randomX = (Math.random() - 0.5) * 0.45;
+      const randomY = (Math.random() - 0.5) * 0.4;
+      const randomZ = (Math.random() - 0.5) * 0.45;
 
       particlePos[i3] = Math.cos(branchAngle + spinAngle) * radius + randomX;
       particlePos[i3 + 1] = randomY;
       particlePos[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
 
-      const mixRatio = radius / 4.2;
-      const pColor = mixRatio < 0.4 ? cLightCyan : (mixRatio < 0.7 ? cDeepBlue : cIndigo);
+      const mixRatio = radius / 4.4;
+      let pColor;
+      if (mixRatio < 0.3) {
+        pColor = cMatrixEmerald;
+      } else if (mixRatio < 0.65) {
+        pColor = cNeonCyan;
+      } else if (mixRatio < 0.85) {
+        pColor = cDeepSky;
+      } else {
+        pColor = cIndigo;
+      }
 
       particleCol[i3] = pColor.r;
       particleCol[i3 + 1] = pColor.g;
@@ -918,15 +1014,38 @@
     particleGeo.setAttribute('color', new THREE.BufferAttribute(particleCol, 3));
 
     const particleMat = new THREE.PointsMaterial({
-      size: isMobile ? 0.032 : 0.04,
+      size: isMobile ? 0.035 : 0.045,
       vertexColors: true,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.8,
       blending: THREE.AdditiveBlending
     });
 
     const galaxyParticles = new THREE.Points(particleGeo, particleMat);
     galaxyPivot.add(galaxyParticles);
+
+    // Vertical Matrix Rain Column Particles
+    const matrixCount = isMobile ? 300 : 600;
+    const matrixGeo = new THREE.BufferGeometry();
+    const matrixPos = new Float32Array(matrixCount * 3);
+
+    for (let i = 0; i < matrixCount; i++) {
+      const i3 = i * 3;
+      matrixPos[i3] = (Math.random() - 0.5) * 8.0;
+      matrixPos[i3 + 1] = (Math.random() - 0.5) * 6.0;
+      matrixPos[i3 + 2] = (Math.random() - 0.5) * 8.0;
+    }
+
+    matrixGeo.setAttribute('position', new THREE.BufferAttribute(matrixPos, 3));
+    const matrixMat = new THREE.PointsMaterial({
+      size: 0.03,
+      color: new THREE.Color('#10b981'),
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending
+    });
+    const matrixParticles = new THREE.Points(matrixGeo, matrixMat);
+    galaxyPivot.add(matrixParticles);
 
     galaxyPivot.position.y = isMobile ? -0.1 : -0.2;
 
@@ -1009,28 +1128,65 @@
       const elapsedTime = clock.getElapsedTime();
       waveUniforms.uTime.value = elapsedTime;
 
-      // Rotate Central Sun Corona
-      coronaMesh.rotation.y = elapsedTime * 0.2;
-      coronaMesh.rotation.x = Math.sin(elapsedTime * 0.15) * 0.2;
+      // Rotate Cyber Sun Core Components
+      innerCoreMesh.rotation.y = elapsedTime * 0.3;
+      outerCoreMesh.rotation.y = -elapsedTime * 0.25;
+      outerCoreMesh.rotation.x = Math.sin(elapsedTime * 0.2) * 0.25;
 
-      // Rotate Planets in their Orbits
+      hudRings.forEach(r => {
+        r.mesh.rotation.z += r.speed;
+      });
+
+      // Orbit Cyber Planets & Update Positions
       planets.forEach((p) => {
         p.angle += 0.005 * p.speed;
-        p.mesh.position.x = Math.cos(p.angle) * p.distance;
-        p.mesh.position.z = Math.sin(p.angle) * p.distance;
-        p.mesh.rotation.y += p.rotSpeed;
+        p.pivot.position.x = Math.cos(p.angle) * p.distance;
+        p.pivot.position.z = Math.sin(p.angle) * p.distance;
+
+        p.wire.rotation.y += p.rotSpeed;
+        p.wire.rotation.x += p.rotSpeed * 0.5;
 
         if (p.moon) {
-          const moonAngle = elapsedTime * 2.5;
+          const moonAngle = elapsedTime * 2.8;
           p.moon.position.x = Math.cos(moonAngle) * 0.32;
           p.moon.position.z = Math.sin(moonAngle) * 0.32;
         }
       });
 
-      // Rotate Galaxy Particle Arms
-      galaxyParticles.rotation.y = elapsedTime * 0.05 + scrollProgress * Math.PI * 2;
+      // Update Constellation Lines connecting planets
+      const linePositions = new Float32Array(maxLines * 6);
+      let lineIdx = 0;
+      for (let i = 0; i < planets.length; i++) {
+        for (let j = i + 1; j < planets.length; j++) {
+          if (lineIdx < maxLines * 6) {
+            const posA = planets[i].pivot.position;
+            const posB = planets[j].pivot.position;
+            linePositions[lineIdx++] = posA.x;
+            linePositions[lineIdx++] = posA.y;
+            linePositions[lineIdx++] = posA.z;
+            linePositions[lineIdx++] = posB.x;
+            linePositions[lineIdx++] = posB.y;
+            linePositions[lineIdx++] = posB.z;
+          }
+        }
+      }
+      constellationGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
 
-      // Camera 360-degree orbital flight path around the Solar System
+      // Rotate Galaxy Particles
+      galaxyParticles.rotation.y = elapsedTime * 0.04 + scrollProgress * Math.PI * 2;
+
+      // Animate Matrix Rain Droplets Downwards
+      const matPos = matrixGeo.attributes.position.array;
+      for (let i = 0; i < matrixCount; i++) {
+        const i3 = i * 3 + 1;
+        matPos[i3] -= 0.015;
+        if (matPos[i3] < -3.0) {
+          matPos[i3] = 3.0;
+        }
+      }
+      matrixGeo.attributes.position.needsUpdate = true;
+
+      // Camera 360-degree orbital flight path around the Cyber Solar System
       const orbitAngle = scrollProgress * Math.PI * 2;
       const radius = isMobile ? 5.2 : 3.8;
 
